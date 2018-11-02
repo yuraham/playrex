@@ -1,8 +1,10 @@
 package sk.management;
 
-import sk.connection.SkConnection;
+import playconnection.RexConnection;
 
-public class ManagementDao extends SkConnection {
+public class ManagementDao extends RexConnection {
+	
+	
 	
 	
 	

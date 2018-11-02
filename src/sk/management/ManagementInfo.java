@@ -3,25 +3,26 @@ package sk.management;
 import java.sql.Timestamp;
 
 public class ManagementInfo {
-	private Integer num;
 	private Integer worker_number;
+	private String name;
 	private String division;
 	private String position;
 	private Timestamp join_date;
 	private Timestamp leave_date;
 	private Integer activate;
-	
-	public Integer getNum() {
-		return num;
-	}
-	public void setNum(Integer num) {
-		this.num = num;
-	}
+	private String memo;
+	private String authority;
 	public Integer getWorker_number() {
 		return worker_number;
 	}
 	public void setWorker_number(Integer worker_number) {
 		this.worker_number = worker_number;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getDivision() {
 		return division;
@@ -59,14 +60,13 @@ public class ManagementInfo {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-	public Timestamp getUpdate_date() {
-		return update_date;
+	public String getAuthority() {
+		return authority;
 	}
-	public void setUpdate_date(Timestamp update_date) {
-		this.update_date = update_date;
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
-	private String memo;
-	private Timestamp update_date;
+	
 	
 
 }
