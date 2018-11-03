@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class RexConnection {
-    Connection con;
+    public Connection con;
     String url = "jdbc:mysql://localhost:3306/playrex";
     String user = "jsp_user";
     String pass = "qwer1234";

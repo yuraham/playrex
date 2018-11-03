@@ -12,6 +12,7 @@ public class ManagementInfo {
 	private Integer activate;
 	private String memo;
 	private String authority;
+	
 	public Integer getWorker_number() {
 		return worker_number;
 	}

@@ -9,11 +9,14 @@
 <title>제목없음</title>
 </head>
 <body>
-회원가입 페이지
-<form action="" method="post">
-<input type="text" name='worker_number' />
-<input type="text" name='name' />
-<input type="submit" values='확인' />
+사원등록
+<form action="m_register.do" method="post">
+
+이름<input type="text" name='name' />
+부서<input type="text" name='division' />
+직책<input type="text" name='position' />
+메모<input type="text" name='memo' />
+<input type="submit" value='확인' />
 
 </form>
 </body>
