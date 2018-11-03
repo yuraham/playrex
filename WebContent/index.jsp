@@ -22,21 +22,23 @@
             로그인 되었습니다.
         </c:if>
         <c:if test="${empty ID }">
-            <form action="${pageContext.request.contextPath}/user/login.do" method="post">
+            <form action="${pageContext.request.contextPath}/sk_user/login.do" method="post">
                 <table>
                 	<tr>
-                		<td>아이디</td>
-                		<td><input type="text" name="id" /></td>
+                		<td>사원번호</td>
+                		<td><input type="text" name="worker_number" /></td>
                 	</tr>
                 	<tr>
                 		<td>비밀번호</td>
                 		<td><input type="password" name="pass" /></td>
                 	</tr>
                 	<tr>
-                		<td colspan="2"><input type="submit" value="로그인" /></td>
+                		<td colspan="2"><input type="submit" value="접속" /></td>
                 	</tr>
                 </table>
             </form>
         </c:if>
+        
+        
     </jsp:body>
 </t:genericpage>

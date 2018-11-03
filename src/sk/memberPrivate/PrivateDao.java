@@ -1,12 +1,13 @@
 package sk.memberPrivate;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import playconnection.RexConnection;
 
-public class PrivateDao extends RexConnection{
-	
-	////회원가입
+public class PrivateDao extends RexConnection {
+
+	//// 회원가입
 	public int insertPrivate(PrivateInfo privacy) {
 		PreparedStatement pstmt = null;
 		String query = "INSERT INTO rex_private VALUES(?,?,?,?,?,?,now())";
@@ -21,17 +22,68 @@ public class PrivateDao extends RexConnection{
 			pstmt.setString(5, privacy.getE_mail());
 			pstmt.setString(6, privacy.getAddress());
 			res = pstmt.executeUpdate();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeConnection();
 		}
 		return res;
 	}
-	
-	
-	
-	//정보수정
-	//정보 조회 
+
+	//// 개인정보 조회
+	public PrivateInfo getPrivate(Integer worker_number) {
+		PreparedStatement pstmt = null;
+		PrivateInfo privacy = new PrivateInfo();
+		String query = "SELECT * FROM rex_private where worker_number=?";
+
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, worker_number);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			privacy.setWorker_number(rs.getInt("worker_number"));
+			//privacy.setName(rs.getString("name"));
+			privacy.setPass(rs.getString("pass"));
+			privacy.setPhone(rs.getString("phone"));
+			privacy.setPhone2(rs.getString("phone2"));
+			privacy.setE_mail(rs.getString("e_mail"));
+			privacy.setAddress(rs.getString("address"));
+			privacy.setReg_date(rs.getTimestamp("reg_date"));
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return privacy;
+
+	}
+
+	// 회원가입 여부 확인
+	public boolean isMember(Integer worker_number, String pass) {
+		PreparedStatement pstmt = null;
+		String query = "SELECT * FROM rex_private WHERE worker_number=? AND pass=?";
+		boolean res = false;
+
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, worker_number);
+			pstmt.setString(2, pass);
+			
+			ResultSet rs = pstmt.executeQuery();
+			res = rs.next();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
+
+	}
+
+	// 정보수정
 
 }

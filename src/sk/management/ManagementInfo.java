@@ -9,7 +9,7 @@ public class ManagementInfo {
 	private String position;
 	private Timestamp join_date;
 	private Timestamp leave_date;
-	private Integer activate;
+	private Integer active;
 	private String memo;
 	private String authority;
 	
@@ -49,11 +49,11 @@ public class ManagementInfo {
 	public void setLeave_date(Timestamp leave_date) {
 		this.leave_date = leave_date;
 	}
-	public Integer getActivate() {
-		return activate;
+	public Integer getActive() {
+		return active;
 	}
-	public void setActivate(Integer activate) {
-		this.activate = activate;
+	public void setActive(Integer active) {
+		this.active = active;
 	}
 	public String getMemo() {
 		return memo;
