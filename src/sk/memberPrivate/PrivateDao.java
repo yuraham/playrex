@@ -85,5 +85,24 @@ public class PrivateDao extends RexConnection {
 	}
 
 	// 정보수정
+	
+	public int updateMember(PrivateInfo privacy, Integer worker_number) {
+		PreparedStatement pstmt = null;
+		String query = "UPDATE rex_private SET pass=?, phone=?,phone2=?, e_mail=?, address=? WHERE worker_number = ?;";
+		int res = 0;
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, privacy.getPass());
+			pstmt.setString(2, privacy.getPhone());
+			pstmt.setString(3, privacy.getPhone2());
+			pstmt.setString(4, privacy.getE_mail());
+			pstmt.setString(5, privacy.getAddress());
+			pstmt.setInt(6, worker_number);
+			
+			res = pstmt.executeUpdate();
+		}catch(Exception e) {e.printStackTrace();;}finally {closeConnection();} return res;
+		
+	}
 
 }

@@ -4,11 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-로그인 테스트중 
-사원번호   <a href="<%= request.getContextPath()%>/sk_user/private_info.do"><%=session.getAttribute("worker_number")%></a>
+<div class="container" style='width:600px;' >
+<%=request.getAttribute("message")%><br>
+사원번호<%=session.getAttribute("worker_number")%> :    <a href="<%= request.getContextPath()%>/sk_user/private_info.do"><%=session.getAttribute("name")%></a>님 안녕하세요 !
+<a href="<%= request.getContextPath()%>/sk_user/logout.do">로그아웃</a><br>
+<a href="<%= request.getContextPath()%>/profile.jsp">자기소개</a>
+<br>
+<a href="<%= request.getContextPath()%>/sk_user/private_info.do">정보수정<a></a>
+
+</div>
+
+
 </body>
 </html>

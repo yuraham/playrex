@@ -3,15 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<title>Insert title here</title>
+<title>양순규</title>
 </head>
 <body>
 
-
-<%=request.getAttribute("message") %>
-<a href="<%= request.getContextPath() %>/home.do">홈으로 </a>
+ title 자기소개로 바꾸기 
 </body>
 </html>

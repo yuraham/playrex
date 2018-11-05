@@ -1,31 +1,77 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@page session="true" %>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@page session="true"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 <title>Insert title here</title>
 </head>
 <body>
- 회원정보
- 인사정보 ${sessionScope.management.name }
- <form action="${pageContext.request.contextPath}/sk_user/update.do" method="post">
-<input type="text" name="worker_number" value="${sessionScope.management.worker_number}" />
-<input type="text" name="name" value="${sessionScope.management.name }" />
-<input type="hidden" name="pass" value="${sessionScope.privacy.pass }" />
-<input type="text" name="division" value="${sessionScope.management.division }" />
-<input type="text" name="position" value="${sessionScope.management.position }" />
-<input type="text" name="phone" value="${sessionScope.privacy.phone }" />
-<input type="text" name="phone2" value="${sessionScope.privacy.phone2 }" />
-<input type="text" name="e_mail" value="${sessionScope.privacy.e_mail }" />
-<input type="text" name="address" value="${sessionScope.privacy.address }" />
-<input type="text" name="join_date" value="${sessionScope.management.join_date }" />
+	<div class="center-block " style="background-color:#dddddd;height:30px;width: 400px;">
+		<form action="${pageContext.request.contextPath}/sk_user/update.do"
+			method="post">
+			<table>
+			<caption>회원정보</caption>
+				<tr>
+					<td>사원번호 :</td>
+					<td><input type="text" name="worker_number"
+						value="${sessionScope.management.worker_number}" /></td>
+				</tr>
+				<tr>
+					<td>이름 :</td>
+					<td><input type="text" name="name"
+						value="${sessionScope.management.name }" /></td>
+				</tr>
+				<tr>
+					<td>비밀번호 :</td>
+					<td><input type="password" name="pass"
+						value="${sessionScope.privacy.pass }" /></td>
+				</tr>
+				<tr>
+					<td>전화번호:</td>
+					<td><input type="text" name="phone"
+						value="${sessionScope.privacy.phone }" /></td>
+				</tr>
+				<tr>
+					<td>자택:</td>
+					<td><input type="text" name="phone2"
+						value="${sessionScope.privacy.phone2 }" /></td>
+				</tr>
+				<tr>
+					<td>e_mail:</td>
+					<td><input type="text" name="e_mail"
+						value="${sessionScope.privacy.e_mail }" /></td>
+				</tr>
+
+				<tr>
+					<td>추천인 아이디 :</td>
+					<td><input type="text" name="address"
+						value="${sessionScope.privacy.address }" /></td>
+				</tr>
+				<tr>
+					<td>입사일:</td>
+					<td><input type="text" name="join_date"
+						value="${sessionScope.management.join_date }" /></td>
+				</tr>
+				<tr>
+					<td></td><td><input type="submit" value="정보수정" class="btn btn-primary center-block" style="width:160px;"/></td>
+				</tr>
+			</table>
+
+			<br>
+			<%-- 부서:<input type="text" name="division" value="${sessionScope.management.division }" /><br>
+직책:<input type="text" name="position" value="${sessionScope.management.position }" /><br> --%>
 
 
-</form>
-*수정버튼 클릭으로 입력활성화 
+
+		</form>
+	</div>
 
 </body>
 </html>
