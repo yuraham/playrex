@@ -37,7 +37,7 @@ public class PrivateUpdateAction implements CommandAction {
 		}
 		request.setAttribute("message", text);
 
-		return "/choice.jsp";
+		return "/sk_user/private_info.do";
 	}
 
 }

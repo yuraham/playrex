@@ -22,7 +22,7 @@ public class RegisterManagementAc implements CommandAction {
 			text = "사원등록에 에 성공하였습니다.";
 		}
 		request.setAttribute("message", text);
-		return "managementRegister.jsp";
+		return "/sk_manager/management_main.jsp";
 	}
 
 }

@@ -38,17 +38,17 @@
 					<td>전화</td>
 					<td><input type="text" name='phone' id="PHONE" /></td>
 				</tr>
-				<!-- <tr><td>자택</td> <td><input type="text" name='phone2' id = "PHONE2"/></td></tr> -->
+				<tr><td>자택</td> <td><input type="text" name='phone2' id = "PHONE2"/></td></tr>
 				<tr>
 					<td>e-mail</td>
 					<td><input type="text" name='e_mail' id="EMAIL" /></td>
 				</tr>
 				<tr>
-					<td>추천인 아이디</td>
+					<td>주소</td>
 					<td><input type="text" name='address' id="ADDR" /></td>
 				</tr>
 				<tr>
-					<td><input type="button" value='확인' /></td>
+					<td><input type="button" value='확인' id="sBtn"/><input type="button" value='취소' id="rbtn" onClick="history.back();"/></td>
 			</table>
 		</form>
 	</div>
@@ -61,7 +61,7 @@
 	var id = $("#ID"), pass = $("#PASS"), pass2 = $("#PASS2"), nameForm = $("#NAME"), phone = $("#PHONE"), email = $("#EMAIL"), addr = $("#ADDR");
 
 	$(document).ready(function() {
-		$(":button").click(formCheck)
+		$("#sBtn").click(formCheck)
 	})
 
 	function formCheck() {

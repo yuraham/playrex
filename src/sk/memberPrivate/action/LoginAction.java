@@ -21,6 +21,7 @@ public class LoginAction implements CommandAction {
 		String pass = request.getParameter("pass");
 		String rPath = request.getContextPath();
 		String name = data2.getManagement(worker_number).getName();
+		String author = data2.getManagement(worker_number).getAuthority();
 		String text = null;
 		
 		//회원가입이 되어잇다면
@@ -28,6 +29,7 @@ public class LoginAction implements CommandAction {
 			HttpSession session = request.getSession();
 			session.setAttribute("worker_number", worker_number);
 			session.setAttribute("name", name );
+			session.setAttribute("author", author);
 			response.sendRedirect(rPath+"/choice.jsp");
 			return null;
 		}else {

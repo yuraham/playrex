@@ -51,7 +51,7 @@ public class ManagementDao extends RexConnection {
 		return res;
 	}
 
-	// 인사정보 조회
+	// 인사정보 조회(사원번호로 조회 , 1명만 가능)
 	public ManagementInfo getManagement(Integer worker_number) {
 		PreparedStatement pstmt = null;
 		ManagementInfo management = new ManagementInfo();
@@ -73,7 +73,31 @@ public class ManagementDao extends RexConnection {
 			management.setAuthority(rs.getString("authority"));
 			management.setMemo(rs.getString("memo"));
 			rs.close();
-			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return management;
+	}
+
+	// 인사정보 조회 (이름으로 조회, 리스트 만들기)
+	public ManagementInfo getList(String name, int num) {
+		PreparedStatement pstmt = null;
+		ManagementInfo management = new ManagementInfo();
+		String query = "SELECT * FROM rex_management WHERE name =? AND worker_number =?";
+
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, num);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			management.setWorker_number(rs.getInt("worker_number"));
+			management.setName(rs.getString("name"));
+			rs.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -83,6 +107,30 @@ public class ManagementDao extends RexConnection {
 	}
 
 	// 인사정보 수정
+
+	public int updateMember(ManagementInfo management, int worker_number) {
+		PreparedStatement pstmt = null;
+		int res = 0;
+		String query = "UPDATE rex_management SET division=?, position=?, leave_date=?, active=?, memo=? WHERE worker_number=?";
+
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, management.getDivision());
+			pstmt.setString(2, management.getPosition());
+			pstmt.setTimestamp(3, management.getLeave_date());
+			pstmt.setInt(4, management.getActive());
+			pstmt.setString(5, management.getMemo());
+			pstmt.setInt(6, worker_number);
+			res = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
+	}
 	// 정보수정 기록 조회
 
 }
