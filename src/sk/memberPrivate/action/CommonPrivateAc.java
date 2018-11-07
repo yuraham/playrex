@@ -27,10 +27,7 @@ public class CommonPrivateAc {
 				privacy.setPhone(request.getParameter("phone"));
 				break;
 			case "phone2":
-				if(request.getParameter("phone2").equals("")) {
-					privacy.setPhone2(null);
-				}else {
-				privacy.setPhone2(request.getParameter("phone2"));}
+				privacy.setPhone2(request.getParameter("phone2"));
 				break;
 			case "e_mail":
 				privacy.setE_mail(request.getParameter("e_mail"));

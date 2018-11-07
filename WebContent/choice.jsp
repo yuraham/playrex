@@ -14,6 +14,7 @@
 
 <div class="container" style='width:600px;' >
 <%= request.getAttribute("message") %>
+<%=session.getAttribute("message") %>
 사원번호<%=session.getAttribute("worker_number")%> :    <a href="<%= request.getContextPath()%>/sk_user/private_info.do"><%=session.getAttribute("name")%></a>님 안녕하세요 !
 <a href="<%= request.getContextPath()%>/sk_user/logout.do">로그아웃</a><br>
 <%-- <a href="<%= request.getContextPath()%>/profile.jsp">자기소개</a>

@@ -28,7 +28,7 @@ public class ManagementDao extends RexConnection {
 		return res;
 	}
 
-	//// 사원 등록 조회
+	//// 사원 등록 조회(회원가입할때)
 	public boolean isManagement(Integer worker_num, String name) {
 		PreparedStatement pstmt = null;
 		String query = "SELECT * FROM rex_management where worker_number=?  AND name=?";
@@ -50,8 +50,31 @@ public class ManagementDao extends RexConnection {
 		}
 		return res;
 	}
+	
+	// 사원 등록 조회 
+	public boolean isManagement2(int worker_num) {
+		PreparedStatement pstmt = null;
+		String query = "SELECT * FROM rex_management where worker_number=?";
+		boolean res = false;
 
-	// 인사정보 조회(사원번호로 조회 , 1명만 가능)
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, worker_num);
+
+			ResultSet rs = pstmt.executeQuery();
+			res = rs.next();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
+
+	// 인사 정보 조회
 	public ManagementInfo getManagement(Integer worker_number) {
 		PreparedStatement pstmt = null;
 		ManagementInfo management = new ManagementInfo();
@@ -69,7 +92,7 @@ public class ManagementDao extends RexConnection {
 			management.setPosition(rs.getString("position"));
 			management.setJoin_date(rs.getTimestamp("join_date"));
 			management.setLeave_date(rs.getTimestamp("leave_date"));
-			management.setActive(rs.getInt("active"));
+			management.setActive(rs.getString("active"));
 			management.setAuthority(rs.getString("authority"));
 			management.setMemo(rs.getString("memo"));
 			rs.close();
@@ -81,6 +104,7 @@ public class ManagementDao extends RexConnection {
 		}
 		return management;
 	}
+	//
 
 	// 인사정보 조회 (이름으로 조회, 리스트 만들기)
 	public ManagementInfo getList(String name, int num) {
@@ -119,7 +143,7 @@ public class ManagementDao extends RexConnection {
 			pstmt.setString(1, management.getDivision());
 			pstmt.setString(2, management.getPosition());
 			pstmt.setTimestamp(3, management.getLeave_date());
-			pstmt.setInt(4, management.getActive());
+			pstmt.setString(4, management.getActive());
 			pstmt.setString(5, management.getMemo());
 			pstmt.setInt(6, worker_number);
 			res = pstmt.executeUpdate();
@@ -131,6 +155,6 @@ public class ManagementDao extends RexConnection {
 		}
 		return res;
 	}
-	// 정보수정 기록 조회
+
 
 }

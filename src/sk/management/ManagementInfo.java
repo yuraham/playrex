@@ -2,6 +2,7 @@ package sk.management;
 
 import java.sql.Timestamp;
 
+
 public class ManagementInfo {
 	private Integer worker_number;
 	private String name;
@@ -9,7 +10,13 @@ public class ManagementInfo {
 	private String position;
 	private Timestamp join_date;
 	private Timestamp leave_date;
-	private Integer active;
+	private String active;
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
+	}
 	private String memo;
 	private String authority;
 	
@@ -49,12 +56,8 @@ public class ManagementInfo {
 	public void setLeave_date(Timestamp leave_date) {
 		this.leave_date = leave_date;
 	}
-	public Integer getActive() {
-		return active;
-	}
-	public void setActive(Integer active) {
-		this.active = active;
-	}
+	
+	
 	public String getMemo() {
 		return memo;
 	}

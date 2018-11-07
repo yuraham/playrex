@@ -18,20 +18,24 @@ public class CommonManagementAc {
 				Management.setName(request.getParameter("name"));
 				break;
 			case "division":
-				
-					Management.setDivision(request.getParameter("division"));
-				
+
+				Management.setDivision(request.getParameter("division"));
+
 				break;
 			case "position":
-				
-					Management.setPosition(request.getParameter("position"));
-				
+
+				Management.setPosition(request.getParameter("position"));
+
+				break;
+			case "active":
+				Management.setActive(request.getParameter("active"));
 				break;
 			case "memo":
-				if (request.getParameter("memo").equals("")) {
-					Management.setMemo(null);
-				} else {
-					Management.setMemo(request.getParameter("memo"));
+				if(request.getParameter("memo").equals(null)) {
+					
+					Management.setMemo("");
+				}else {
+				Management.setMemo(request.getParameter("memo"));
 				}
 				break;
 			}

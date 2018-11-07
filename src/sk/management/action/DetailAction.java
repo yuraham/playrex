@@ -9,6 +9,7 @@ import sk.management.ManagementDao;
 import sk.management.ManagementInfo;
 import sk.memberPrivate.PrivateDao;
 import sk.memberPrivate.PrivateInfo;
+import sk.memberPrivate.action.CommonPrivateAc;
 
 public class DetailAction implements CommandAction {
 	@Override
@@ -20,12 +21,24 @@ public class DetailAction implements CommandAction {
 		PrivateInfo privacy = new PrivateInfo();
 		int number = Integer.parseInt(request.getParameter("num"));
 		
-		management = data.getManagement(number);
-		privacy = data2.getPrivate(number);
+		CommonPrivateAc utils = new CommonPrivateAc();
+		//사원등록을 확인한다. 
+		if(data.isManagement2(number)) {
+			management = data.getManagement(number);
+			session.setAttribute("management", management);
+		}
 		
-		session.setAttribute("management", management);
-		session.setAttribute("privacy", privacy);
 		
+		if(data2.siteMember(number)) {
+			privacy = data2.getPrivate(number);
+			session.setAttribute("privacy", privacy);
+		}else {
+			privacy.setPhone("");
+			privacy.setPhone2("");
+			privacy.setE_mail("");
+			privacy.setAddress("");
+			session.setAttribute("privacy", privacy);
+		}
 		
 		return "management_main.jsp";
 	}

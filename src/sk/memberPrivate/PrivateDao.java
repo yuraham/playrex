@@ -43,7 +43,7 @@ public class PrivateDao extends RexConnection {
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			privacy.setWorker_number(rs.getInt("worker_number"));
-			//privacy.setName(rs.getString("name"));
+			// privacy.setName(rs.getString("name"));
 			privacy.setPass(rs.getString("pass"));
 			privacy.setPhone(rs.getString("phone"));
 			privacy.setPhone2(rs.getString("phone2"));
@@ -59,8 +59,29 @@ public class PrivateDao extends RexConnection {
 		return privacy;
 
 	}
+	
+	//회원가입 여부 확인(사이트 가입 확인)
+	public boolean siteMember(Integer worker_number) {
+		PreparedStatement pstmt = null;
+		String query ="SELECT * FROM rex_private WHERE worker_number=?";
+		boolean res = false;
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, worker_number);
+			ResultSet rs = pstmt.executeQuery();
+			res = rs.next();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
+		
+	}
 
-	// 회원가입 여부 확인
+	// 회원가입 여부 확인(로그인 할때)
 	public boolean isMember(Integer worker_number, String pass) {
 		PreparedStatement pstmt = null;
 		String query = "SELECT * FROM rex_private WHERE worker_number=? AND pass=?";
@@ -71,7 +92,7 @@ public class PrivateDao extends RexConnection {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, worker_number);
 			pstmt.setString(2, pass);
-			
+
 			ResultSet rs = pstmt.executeQuery();
 			res = rs.next();
 			rs.close();
@@ -85,7 +106,6 @@ public class PrivateDao extends RexConnection {
 	}
 
 	// 정보수정
-	
 	public int updateMember(PrivateInfo privacy, Integer worker_number) {
 		PreparedStatement pstmt = null;
 		String query = "UPDATE rex_private SET pass=?, phone=?,phone2=?, e_mail=?, address=? WHERE worker_number = ?;";
@@ -99,10 +119,42 @@ public class PrivateDao extends RexConnection {
 			pstmt.setString(4, privacy.getE_mail());
 			pstmt.setString(5, privacy.getAddress());
 			pstmt.setInt(6, worker_number);
-			
+
 			res = pstmt.executeUpdate();
-		}catch(Exception e) {e.printStackTrace();;}finally {closeConnection();} return res;
-		
+		} catch (Exception e) {
+			e.printStackTrace();
+			;
+		} finally {
+			closeConnection();
+		}
+		return res;
+
 	}
+	
+	
+
+//	public int updateMember2(PrivateInfo privacy, Integer worker_number) {
+//		PreparedStatement pstmt = null;
+//		String query = "UPDATE rex_private SET phone=?,phone2=?, e_mail=?, address=? WHERE worker_number = ?;";
+//		int res = 0;
+//		openConnection();
+//		try {
+//			pstmt = con.prepareStatement(query);
+//			pstmt.setString(1, privacy.getPhone());
+//			pstmt.setString(2, privacy.getPhone2());
+//			pstmt.setString(3, privacy.getE_mail());
+//			pstmt.setString(4, privacy.getAddress());
+//			pstmt.setInt(5, worker_number);
+//
+//			res = pstmt.executeUpdate();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			;
+//		} finally {
+//			closeConnection();
+//		}
+//		return res;
+//
+//	}
 
 }

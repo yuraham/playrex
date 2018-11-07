@@ -21,9 +21,12 @@ public class SearchAction implements CommandAction{
 		int i = 0;
 		StringBuffer list = new StringBuffer();
 		
+		//////이름으로 검색하여 사번을 알아낸다. 사번을 리스트로 관리하여  리스트를 포문으로 돌린다.
 		for(i=1; i<30; i++) {
+		if(	data.isManagement2(i) ) {
+			if(data.getManagement(i).getName().equals(name)) {
+			 
 			management = data.getList(name, i);
-			if(management.getName() != null) {
 			list.append("<tr><td>");
 			list.append("<a href=\"");
 			list.append(rPath +"/sk_manager/detail.do?num="+i);
@@ -39,6 +42,8 @@ public class SearchAction implements CommandAction{
 			list.append("</td></tr>");
 			}
 		}
+		}
+		
 		request.setAttribute("memberList", list);
 		
 		return "management_main.jsp";
