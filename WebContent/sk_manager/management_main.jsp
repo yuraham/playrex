@@ -95,7 +95,9 @@
 				<td><input type="submit" value="수정" /></td>
 				<td><input type="reset" value="취소" /></td>
 				<td></td>
-				<td><input type="button" value="인사기록" onclick="location.href='${pageContext.request.contextPath}/sk_manager/management_list.do'"/><input type="button" value="개인기록" /></td>
+				<td><input type="button" value="인사기록"
+					onclick="location.href='${pageContext.request.contextPath}/sk_manager/management_list.do'" /><input
+					type="button" value="개인기록" onclick="location.href='${pageContext.request.contextPath}/sk_manager/private_list.do'" /></td>
 			</tr>
 		</table>
 	</form>
