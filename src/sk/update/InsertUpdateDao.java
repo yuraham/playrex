@@ -29,27 +29,27 @@ public class InsertUpdateDao extends RexConnection {
 		return res;
 	}
 
-	public InsertUpdateInfo getList(Integer worker_number, String category) {
+	public InsertUpdateInfo getList(Integer worker_number, String category, int num) {
 		PreparedStatement pstmt = null;
 		InsertUpdateInfo update = new InsertUpdateInfo();
-		String query = "SELECT * FROM rex_update WHERE worker_number=? AND category=? LIMIT 1";
+		String query = "SELECT * FROM rex_update WHERE worker_number=? AND category=? AND num=?";
 		openConnection();
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, worker_number);
 			pstmt.setString(2, category);
-			////
+			pstmt.setInt(3, num);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			update.setWorker_number(worker_number);
 			update.setCategory(category);
-			/////
 			update.setFiled_name(rs.getString("filed_name"));
 			update.setOld_data(rs.getString("old_data"));
 			update.setNew_data(rs.getString("new_data"));
 			update.setUpdate_date(rs.getTimestamp("update_date"));
+			update.setNum(rs.getInt("num"));
 			rs.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -57,6 +57,67 @@ public class InsertUpdateDao extends RexConnection {
 		}
 		return update;
 
+	}
+
+	public int getLastNum(String category) {
+		PreparedStatement pstmt = null;
+		InsertUpdateInfo update = new InsertUpdateInfo();
+		int num = 0;
+		String query = "SELECT * FROM rex_update WHERE category=? ORDER BY num DESC LIMIT 1 ";
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, category);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			update.setNum(rs.getInt("num"));
+			rs.close();
+			num = update.getNum();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return num;
+
+	}
+	
+	public boolean isNumManagement(int num) {
+		PreparedStatement pstmt = null;
+		boolean res = false;
+		String query="Select * from rex_update where num = ? AND category=\"인사정보\"";
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, num);
+			ResultSet rs = pstmt.executeQuery();
+			res = rs.next();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
+	public boolean isNumPrivate(int num) {
+		PreparedStatement pstmt = null;
+		boolean res = false;
+		String query="Select * from rex_update where num = ? AND category=\"개인정보\"";
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, num);
+			ResultSet rs = pstmt.executeQuery();
+			res = rs.next();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
 	}
 
 }

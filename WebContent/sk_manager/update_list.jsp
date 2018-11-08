@@ -9,12 +9,12 @@
 <body>
 
 수정기록 리스트 테스트 <br>
-${sessionScope.changeList.worker_number }
-${sessionScope.changeList.category }
-${sessionScope.changeList.filed_name }
-${sessionScope.changeList.old_data }
-${sessionScope.changeList.new_data }
-${sessionScope.changeList.update_date }
+<table>
+<tr><td>사원번호</td><td>수정내역</td><td>수정 전</td><td>수정후</td><td>수정날짜</td></tr>
+<%=session.getAttribute("changeList") %>
+</table>
+
+
 
 </body>
 </html>
