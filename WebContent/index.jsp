@@ -18,10 +18,10 @@
         <c:if test="${not empty requestScope.message}">
             <div>${requestScope.message }</div>
         </c:if>
-        <c:if test="${not empty ID }">
+        <c:if test="${not empty worker_number }">
             로그인 되었습니다.
         </c:if>
-        <c:if test="${empty ID }">
+        <c:if test="${empty worker_number }">
        
             <form action="${pageContext.request.contextPath}/sk_user/login.do" method="post">
                 <table>
