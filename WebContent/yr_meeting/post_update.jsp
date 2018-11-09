@@ -6,14 +6,44 @@
 
 <t:genericpage>
     <jsp:attribute name="head">
-        <title>등록폼</title>
+        <title>수정</title>
         </jsp:attribute>
     <jsp:body>
+		<c:if test="${not empty worker_number }">
         <div class="container">
-		연결테스트
-		<a href="${pageContext.request.contextPath}/yr_meeting/update.do">수정</a>
-		<a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a>
-		
+		<form action="${pageContext.request.contextPath}/yr_meeting/update.do?met_numb=${requestScope.post.met_numb}" method="post">
+        ${requestScope.list }
+			<table>
+				<tr>
+					<td>제목</td>
+					<td><input type="text" name="met_title" value="${requestScope.post.met_title}"/></td>
+				</tr>
+				<tr>
+					<td>회의실</td>
+					<td><input type="text" name="met_room" value="${requestScope.post.met_room}"/></td>
+				</tr>
+				<tr>
+					<td>프로젝트명</td>
+					<td><input type="text" name="met_project" value="${requestScope.post.met_project}"/></td>
+				</tr>
+				<tr>
+					<td>안건요약</td>
+					<td><input type="text" name="met_subject" value="${requestScope.post.met_subject}"/></td>
+				</tr>
+				<tr>
+					<td>작성자</td>
+					<td><input type="text" name="met_writer" value="${requestScope.post.met_writer}"/></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="다음"/></td>
+					<td><a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a></td>
+				</tr>
+			</table>
+		</form>
 		</div>
+		</c:if>
+		<c:if test="${empty worker_number }">
+		<h3>로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
+		</c:if>
     </jsp:body>
 </t:genericpage>

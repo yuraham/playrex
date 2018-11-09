@@ -6,35 +6,19 @@
 
 <t:genericpage>
     <jsp:attribute name="head">
-        <title>등록</title>
+        <title>수정</title>
         </jsp:attribute>
     <jsp:body>
-		<c:if test="${not empty worker_number}">
+		<c:if test="${not empty worker_number }">
         <div class="container">
-		<form action="${pageContext.request.contextPath}/yr_meeting/post.do" method="post">
+		<form action="${pageContext.request.contextPath}/yr_meeting/update2.do?met_numb=${requestScope.post.met_numb}" method="post">
 			<table>
 				<tr>
-					<td>제목</td>
-					<td><input type="text" name="met_title"/></td>
+					<td>내용 및 결과</td>
+					<td><input type="text" name="met_text" value="${requestScope.post.met_text}"/></td>
 				</tr>
 				<tr>
-					<td>회의실</td>
-					<td><input type="text" name="met_room"/></td>
-				</tr>
-				<tr>
-					<td>프로젝트명</td>
-					<td><input type="text" name="met_project"/></td>
-				</tr>
-				<tr>
-					<td>안건요약</td>
-					<td><input type="text" name="met_subject"/></td>
-				</tr>
-				<tr>
-					<td>작성자</td>
-					<td><input type="text" name="met_writer"/></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="다음"/></td>
+					<td><input type="submit" value="저장"/></td>
 					<td><a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a></td>
 				</tr>
 			</table>

@@ -6,34 +6,27 @@
 
 <t:genericpage>
     <jsp:attribute name="head">
-        <title>등록폼</title>
+        <title>등록</title>
         </jsp:attribute>
     <jsp:body>
+		<c:if test="${not empty worker_number}">
         <div class="container">
-        연결테스트
-<%--         <h1>회의록리스트</h1>
-        	${requestScope.member }<br>
-        	${requestScope.num }
-	 		<table class="table">
-			<thead>
+		<form action="${pageContext.request.contextPath}/yr_meeting/post2.do?met_numb=${requestScope.post.met_numb}" method="post">
+			<table>
 				<tr>
-					<th colspan="4">${requestScope.text}</th>
+					<td>내용 및 결과</td>
+					<td><input type="text" name="met_text"/></td>
 				</tr>
-			</thead>
-			<tbody>
- 	 		<c:forEach var="i" items="${requestScope.list}" begin="0" end="${requestScope.num}" step="1">
- 	 			<tr>
-					<td>${i.met_numb}</td>
-					<td width="25%">${i.met_date}</td>
-					<td width="50%"><a href="${pageContext.request.contextPath}/yr_meeting/detail.do?met_numb=${i.met_numb}">${i.met_title}</a></td>
-					<td width="8%">${i.met_writer}</td>
-					<td width="15%">${i.met_project}</td>
+				<tr>
+					<td><input type="submit" value="저장"/></td>
+					<td><a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a></td>
 				</tr>
- 			</c:forEach>
- 			</tbody>
-		</table>
-		<a href="${pageContext.request.contextPath}/yr_meeting/register_form.do">새글쓰기</a> --%>
-				<a href="${pageContext.request.contextPath}/yr_meeting/post2.do">저장</a>
+			</table>
+		</form>
 		</div>
+		</c:if>
+		<c:if test="${empty worker_number }">
+		<h3>로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
+		</c:if>
     </jsp:body>
 </t:genericpage>

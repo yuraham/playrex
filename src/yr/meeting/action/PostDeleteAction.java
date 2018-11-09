@@ -20,6 +20,6 @@ public class PostDeleteAction implements CommandAction{
 		post=data.detailPost(midx);
 		request.setAttribute("post", post);
 		
-		return "delete.jsp";
+		return "post_delete.jsp";
 	}
 }

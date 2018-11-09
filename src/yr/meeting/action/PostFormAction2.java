@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.controller.CommandAction;
 
+
+
 public class PostFormAction2 implements CommandAction {
 
 	@Override

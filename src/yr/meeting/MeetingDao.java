@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import playconnection.RexConnection;
-//import sk.management.ManagementInfo;
 
 public class MeetingDao extends RexConnection{
 	
@@ -61,27 +60,6 @@ public class MeetingDao extends RexConnection{
 		return list;
 	}
 	
-	//작성자 검색
-/*	public ManagementInfo writerName(int met_numb) {
-		PreparedStatement pstmt = null;
-		ManagementInfo member = new ManagementInfo();
-		String query = "SELECT * FROM rex_management WHERE worker_number IN ("
-				+ "SELECT met_writer FROM rex_meeting WHERE met_numb=?";
-		openConnection();
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, met_numb);
-			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			member.setName(rs.getString("name"));
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeConnection();
-		}
-		return member;
-	}*/
-	
 	//특정 포스트 데이터 가져오기
 	public MeetingInfo detailPost(int met_numb) {
 		PreparedStatement pstmt = null;
@@ -110,7 +88,72 @@ public class MeetingDao extends RexConnection{
 		return post;
 	}
 	//등록하기
+	public int insertPost(MeetingInfo post) {
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO rex_meeting (met_numb, met_title, met_room, met_project, met_subject, met_text, met_date, met_writer)" + 
+				"VALUES (null, ?,?,?,?,null, now(),?)";
+		int res=0;
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, post.getMet_title());
+			pstmt.setString(2, post.getMet_room());
+			pstmt.setString(3, post.getMet_project());
+			pstmt.setString(4, post.getMet_subject());
+			pstmt.setInt(5, post.getMet_writer());
+			res = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
 	//수정하기
+	public int updatePost(MeetingInfo post, int met_numb) {
+		PreparedStatement pstmt = null;
+		String query = "UPDATE rex_meeting SET met_title=?,"
+				+ "met_room=?, met_project=?,"
+				+ "met_subject=?, met_writer=? WHERE met_numb=?;";
+		int res = 0;
+		openConnection();
+		try {			
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, post.getMet_title());
+			pstmt.setString(2, post.getMet_room());
+			pstmt.setString(3, post.getMet_project());
+			pstmt.setString(4, post.getMet_subject());
+			pstmt.setInt(5, post.getMet_writer());
+			pstmt.setInt(6, met_numb);
+			res = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
+	//수정, 등록에서 텍스트 집어넣기
+	public int updatePost2(MeetingInfo post, int met_numb) {
+		PreparedStatement pstmt = null;
+		String query = "UPDATE rex_meeting SET met_text=? WHERE met_numb=?";
+		int res = 0;
+		openConnection();
+		try {			
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, post.getMet_text());
+			pstmt.setInt(2, met_numb);
+			res = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
 	//삭제하기
 	public int deletePost(int met_numb) {
 		PreparedStatement pstmt = null;
@@ -122,6 +165,26 @@ public class MeetingDao extends RexConnection{
 			pstmt.setInt(1, met_numb);
 			res = pstmt.executeUpdate();
 		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
+	//포스트가 있는지 확인하기
+	public boolean isPost(int met_numb) {
+		PreparedStatement pstmt=null;
+		String query="SELECT * FROM rex_meeting WHERE met_numb=?";
+		boolean res = false;
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, met_numb);
+			ResultSet rs = pstmt.executeQuery();
+			res = rs.next();
+			rs.close();
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeConnection();

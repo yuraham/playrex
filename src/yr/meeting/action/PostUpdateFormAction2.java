@@ -4,26 +4,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.controller.CommandAction;
-import yr.meeting.CommonMeetingAction;
 import yr.meeting.MeetingDao;
 import yr.meeting.MeetingInfo;
 
-public class PostUpdateAction implements CommandAction{
+
+public class PostUpdateFormAction2 implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("utf-8");
-		
-		CommonMeetingAction util = new CommonMeetingAction();
-		MeetingInfo post = util.mappingReqMemo(request);
+
+		MeetingInfo post = new MeetingInfo();
 		MeetingDao data = new MeetingDao();
-		
 		String num = request.getParameter("met_numb");
 		int midx = Integer.parseInt(num);
-		data.updatePost(post, midx);
-
+		post = data.detailPost(midx);
+		
 		request.setAttribute("post", post);
 		
-		return "update_form2.do";
+		return "post_update2.jsp";
 	}
-
 }
