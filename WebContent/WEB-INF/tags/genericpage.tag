@@ -30,6 +30,7 @@
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.slim.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/sk_js/form_check.js"></script>
 </div>
 </body>
 </html>
