@@ -5,11 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.controller.CommandAction;
 
-public class PostUpdateFormAction implements CommandAction{
+public class PostFormAction2 implements CommandAction {
+
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		request.setCharacterEncoding("utf-8");
 		
-		return "post_update.jsp";
+		return "post_form2.jsp";
 	}
 }

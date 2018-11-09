@@ -6,11 +6,12 @@
 
 <t:genericpage>
     <jsp:attribute name="head">
-        <title>회의록 리스트</title>
+        <title>등록폼</title>
         </jsp:attribute>
     <jsp:body>
         <div class="container">
-        <h1>회의록리스트</h1>
+        연결테스트
+<%--         <h1>회의록리스트</h1>
         	${requestScope.member }<br>
         	${requestScope.num }
 	 		<table class="table">
@@ -31,7 +32,8 @@
  			</c:forEach>
  			</tbody>
 		</table>
-		<a href="${pageContext.request.contextPath}/yr_meeting/post_form.do">새글쓰기</a>
+		<a href="${pageContext.request.contextPath}/yr_meeting/register_form.do">새글쓰기</a> --%>
+				<a href="${pageContext.request.contextPath}/yr_meeting/post2.do">저장</a>
 		</div>
     </jsp:body>
 </t:genericpage>
