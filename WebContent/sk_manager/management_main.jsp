@@ -11,7 +11,16 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <title>제목없음</title>
 </head>
+<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+		
+	</script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/static/sk_js/test.js"></script>
+		<link href="${pageContext.request.contextPath}/static/sk_css/test.css" rel="stylesheet" type="text/css">
 <body>
+	
+
 
 
 	관리자 페이지 메인 !!
@@ -97,7 +106,8 @@
 				<td></td>
 				<td><input type="button" value="인사기록"
 					onclick="location.href='${pageContext.request.contextPath}/sk_manager/management_list.do'" /><input
-					type="button" value="개인기록" onclick="location.href='${pageContext.request.contextPath}/sk_manager/private_list.do'" /></td>
+					type="button" value="개인기록"
+					onclick="location.href='${pageContext.request.contextPath}/sk_manager/private_list.do'" /></td>
 			</tr>
 		</table>
 	</form>

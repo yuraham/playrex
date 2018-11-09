@@ -16,14 +16,36 @@ public class ManagementListAction implements CommandAction{
 		
 		InsertUpdateDao data = new InsertUpdateDao();
 		InsertUpdateInfo update = new InsertUpdateInfo();
+		StringBuffer list = new StringBuffer();
 		
 		ManagementInfo management = (ManagementInfo) session.getAttribute("management");
 		Integer worker_number = management.getWorker_number();
 		
-		update = data.getList(worker_number, "인사정보");
-		session.setAttribute("changeList", update);
+		int lastNum = data.getLastNum("인사정보"); // 제일 최근 수정된 내역의 번호
+		for (int i = lastNum; i > lastNum - 15; i--) {
+			if (data.isNumManagement(i)) {
+				update = data.getList(worker_number, "인사정보", i);
+
+				list.append("<tr><td>");
+				list.append(update.getWorker_number());
+				list.append("</td><td>");
+				list.append(update.getFiled_name());
+				list.append("</td><td>");
+				list.append(update.getOld_data());
+				list.append("</td><td>");
+				list.append(update.getNew_data());
+				list.append("</td><td>");
+				list.append(update.getUpdate_date());
+				list.append("</td></tr>");
+			}
+
+		}
 		
-		return "/sk_manager/management_list.jsp";
+		session.setAttribute("changeList", list);
+		
+		return "/sk_manager/update_list.jsp";
 	}
 
 }
+
+

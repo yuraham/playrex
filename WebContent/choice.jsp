@@ -17,9 +17,7 @@
 <%=session.getAttribute("message") %>
 사원번호<%=session.getAttribute("worker_number")%> :    <a href="<%= request.getContextPath()%>/sk_user/private_info.do"><%=session.getAttribute("name")%></a>님 안녕하세요 !
 <a href="<%= request.getContextPath()%>/sk_user/logout.do">로그아웃</a><br>
-<%-- <a href="<%= request.getContextPath()%>/profile.jsp">자기소개</a>
-<br>
-<a href="<%= request.getContextPath()%>/sk_user/private_info.do">정보수정<a></a> --%>
+
 <a href="<%= request.getContextPath()%>/sk_manager/management_info.do">인사 관리</a><br />
 <a href="<%= request.getContextPath()%>/yr_meeting/list.do">회의록 관리</a><br />
 </div>
