@@ -55,7 +55,7 @@ public class ControllerAction extends HttpServlet {
             if (command.indexOf(request.getContextPath()) == 0) {
                 command = command.substring(request.getContextPath().length());
             }
-            String text = (String)commandMap.get(command);
+
             com = (CommandAction)commandMap.get(command);
             if (com == null) {
                 System.out.println("not found : " + command);

@@ -24,44 +24,44 @@
 			<table>
 				<tr class="test">
 					<td class="text-center">사번</td>
-					<td><input type="text" name='worker_number' id="ID" /></td>
+					<td><input type="text" name='worker_number' id="ID" class="checkInput" /></td>
 						<td></td>
 				</tr>
 				<tr>
 					<td class="text-center">이름</td>
-					<td><input type="text" name='name' id="NAME" /><input
-							type="button" value="조회" id="checkBtn" /></td>
+					<td><input type="text" name='name' id="NAME" class="checkInput"/><input
+							type="button" value="조회" id="checkBtn"  /></td>
 						<td></td>
 				</tr>
 				<tr><span class="checkText"></span></tr>
 				<tr>
 					<td class="text-center">비밀번호</td>
-					<td><input type="text" name='pass' id="PASS" /></td>
+					<td><input type="password" name='pass' id="PASS" readonly class="input" style="background-color:lightgray;"/></td>
 						<td></td>
 				</tr>
 				<tr>
 					<td class="text-center">비밀번호 확인</td>
-					<td><input type="text" id="PASS2" /></td>
+					<td><input type="password" id="PASS2" readonly class="input" style="background-color:lightgray;" /></td>
 						<td></td>
 				</tr>
 				<tr>
 					<td class="text-center">전화</td>
-					<td><input type="text" name='phone' id="PHONE" /></td>
+					<td><input type="text" name='phone' id="PHONE" readonly class="input" style="background-color:lightgray;" /></td>
 						<td></td>
 				</tr>
 				<tr>
 					<td class="text-center">자택</td>
-					<td><input type="text" name='phone2' id="PHONE2" /></td>
+					<td><input type="text" name='phone2' id="PHONE2" readonly class="input" style="background-color:lightgray; "/></td>
 						<td></td>
 				</tr>
 				<tr>
 					<td class="text-center">e-mail</td>
-					<td><input type="text" name='e_mail' id="EMAIL" /></td>
+					<td><input type="text" name='e_mail' id="EMAIL" readonly class="input" style="background-color:lightgray;"  /></td>
 						<td></td>
 				</tr>
 				<tr>
 					<td class="text-center">주소</td>
-					<td><input type="text" name='address' id="ADDR" /></td>
+					<td><input type="text" name='address' id="ADDR" readonly class="input" style="background-color:lightgray;" /></td>
 						<td></td>
 				</tr>
 				<tr>

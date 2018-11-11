@@ -19,7 +19,7 @@ public class RegisterPrivateAc implements CommandAction {
 		
 		PrivateDao data = new PrivateDao();
 		ManagementDao data2 = new ManagementDao();
-		String text = null;
+		String text = "";
 		
 		//사원번호가 등록되어 있는지 확인한다. 		
 		if(data2.isManagement(privacy.getWorker_number(), privacy.getName())) {

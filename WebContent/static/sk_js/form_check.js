@@ -10,7 +10,7 @@ $(document).ready(function () {
 	$("#sBtn").click(formCheck)
 })
 
-function memberCheck(){
+function memberCheck() {
 	if (id.val() == "") {
 		return alert("사원번호를 입력해주세요");
 	}
@@ -22,26 +22,33 @@ function memberCheck(){
 
 	loadWorkerNumber();
 
-	
+
 
 }
-function loadWorkerNumber(){
+function loadWorkerNumber() {
 	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-		if(this.readyState ==4 && this.status ==200 ){
-			$(".checkText").innerHTML = this.responseText;
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			$(".checkText").text(this.responseText);
+			if (this.responseText == "인증되었습니다") {
+				$(".checkInput").attr('readonly',true);
+				$(".input").removeAttr('readonly');
+				$(".input").css("background-color","white");
+			}
 		}
+
 	};
-	
+
 	xhttp.open("POST", "id_check.do", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("worker_number="+$("#ID").val()+"&name="+$("#NAME"));
+	//	xhttp.send();
+	xhttp.send("worker_number=" + $("#ID").val() + "&name=" + $("#NAME").val());
 
 }
 
 function formCheck() {
 	////공백체크
-	
+
 	;
 	if (pass.val() == "") {
 		return alert("비밀번호를 입력해주세요");
