@@ -16,7 +16,7 @@
     </jsp:attribute>
 	<jsp:body>
 	<div class="container" style='width: 600px;'>
-	<h1> 이름 정하기 </h1>
+	<h2> palyrex </h2>
 	<c:if test="${not empty requestScope.message}">
             <div>${requestScope.message }</div>
         </c:if>
