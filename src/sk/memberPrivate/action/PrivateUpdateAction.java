@@ -31,8 +31,6 @@ public class PrivateUpdateAction implements CommandAction {
 		if (worker_number != null) {
 			
 			//기존의 정보와 수정된 정보를 비교한다. 
-			
-			
 			InsertUpdateDao data2 = new InsertUpdateDao();
 			InsertUpdateInfo update = new InsertUpdateInfo();
 			CommonUpdateAction utils3 = new CommonUpdateAction();

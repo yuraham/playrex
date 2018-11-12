@@ -1,0 +1,39 @@
+   *{ box-sizing: border-box;}
+
+.result_box{
+	border: 1px solid black;
+	height: 200px;
+	width: 100xp;
+	padding-top: 20px;
+	
+}
+
+
+
+#table_box{
+	float : left;
+	padding: 20px;
+	margin: 20px;
+}
+
+.navi{
+	float: left;
+	width: 250x;
+	height: 320px;
+}
+
+.right_txt1{
+	position: relative;
+	left: 20px;
+}
+
+.right_txt2{
+	position: relative;
+	left: 60px;
+	
+}
+
+.list_txt{
+	padding-left: 55px;
+}
+

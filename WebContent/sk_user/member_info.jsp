@@ -15,77 +15,69 @@
 	<jsp:body>
 	<h2>회원 정보 </h2>
 	
-	<form action="${pageContext.request.contextPath}/sk_user/update.do"
-			method="post">
+	
+	
 			<table>
 				<caption>회원정보</caption>
 				<tr>
 					<td>사원번호 :</td>
-					<td><input type="text" name="worker_number"
-						value="${sessionScope.management.worker_number}" readonly id="ID"/></td>
+					<td>${sessionScope.management.worker_number} </td>
 				</tr>
 				<tr>
 					<td>이름 :</td>
-					<td><input type="text" name="name"
-						value="${sessionScope.management.name }" readonly id="NAME"/></td>
+					<td>
+						${sessionScope.management.name } </td>
 				</tr>
 				<tr>
 					<td>부서:</td>
-					<td><input type="text" name="division"
-						value="${sessionScope.management.division }"  readonly /></td>
+					<td>
+						${sessionScope.management.division }</td>
 				</tr>
 				<tr>
 				</tr>
 				<tr>
 					<td>직책:</td>
-					<td><input type="text" name="position"
-						value="${sessionScope.management.position }" readonly /></td>
+					<td>${sessionScope.management.position }</td>
 				</tr>
 				 <tr>
 					<td>비밀번호 :</td>
-					<td><input type="password" name="pass"
-						value="${sessionScope.privacy.pass }" id="PASS" /></td>
+					<td>${sessionScope.privacy.pass }</td>
 				</tr>
 				 <tr>
 					<td>비밀번호 확인 :</td>
-					<td><input type="password" name="pass"
-						value="${sessionScope.privacy.pass }" id="PASS2"/></td>
+					<td>${sessionScope.privacy.pass }</td>
 				</tr>
 				<tr>
 					<td>전화번호:</td>
-					<td><input type="text" name="phone"
-						value="${sessionScope.privacy.phone }" id="PHONE" /></td>
+					<td>${sessionScope.privacy.phone }</td>
 				</tr>
 				<tr>
 					<td>자택:</td>
-					<td><input type="text" name="phone2"
-						value="${sessionScope.privacy.phone2 }" id="PHONE2" /></td>
+					<td>${sessionScope.privacy.phone2 }</td>
 				</tr>
 				<tr>
 					<td>e_mail:</td>
-					<td><input type="text" name="e_mail"
-						value="${sessionScope.privacy.e_mail }" id="EMAIL"/></td>
+					<td>
+						${sessionScope.privacy.e_mail }</td>
 				</tr>
 
 				<tr>
 					<td>주소 :</td>
-					<td><input type="text" name="address"
-						value="${sessionScope.privacy.address }"  id="ADDR"/></td>
+					<td>${sessionScope.privacy.address }</td>
 				</tr>
 				<tr>
 					<td>입사일:</td>
-					<td><input type="text" name="join_date"
-						value="${sessionScope.management.join_date }" readonly /></td>
+					<td>
+						${sessionScope.management.join_date }</td>
 				</tr>
 				<tr>
 					<td></td>
-					<td> ${responseScope.message }</td>
+					<td> ${sessionScope.message }</td>
 				</tr>
 				<tr>
 					<td></td>
 
-					<td><input type="button" value="정보수정" id="sBtn"/><input type="reset"
-						value="초기화 " /></td>
+					<td><input type="button" value="정보수정" onclick="location.href='${pageContext.request.contextPath}/sk_user/member_info_update.jsp'"/></td>
 				</tr>
 			</table>
 
