@@ -1,17 +1,55 @@
 
 var id = $("#ID"), pass = $("#PASS"), pass2 = $("#PASS2"), nameForm = $("#NAME"), phone = $("#PHONE"), email = $("#EMAIL"), addr = $("#ADDR"), i;
 
-$(document).ready(function() {
-	$("#checkBtn").click(memberCheck)
+//서버 연결 변수
+var memberNumber = $("#worker_number"),
+	memberName = $("#name"),
+	memberDivision = $("#division"),
+	memberPosition = $("#position"),
+	memberJoinDate = $("#join_date"),
+	memberLeaveDate = $("#leave_date"),
+	memberActive = $("#active"),
+	memberMemo = $("#memo"),
+	memberAuthority = $("#authority"),
+	memberPhone = $("#phone"),
+	memberPhone2 = $("#phone2"),
+	memberEmail = $("#e_mail"),
+	memberAdress = $("#address");
+
+
+
+
+
+$(document).ready(function () {
+	$("#checkBtn").click(memberCheck);
+	$("#sBtn").click(formCheck);
+	$("#searchBtn").click(searchCheck);
+	$("#updateBtn").click(updateForm);
 })
-$(document).ready(function() {
-	$("#sBtn").click(formCheck)
-});
 
-$(document).ready(function() {
-	$("#searchBtn").click(searchCheck)
-});
 
+
+function resetButn() {
+	detailName($("#worker_number").val());
+	$(".update_box").css("background-color", "lightgray");
+	$(".update_box").attr('readonly', true);
+	$(".plusBtn").text("");
+	$("#updateBtn").val("수정");
+
+}
+
+function updateForm() {
+	if ($("#worker_number").val() != "") {
+		$(".update_box").css("background-color", "white");
+		$(".update_box").removeAttr('readonly');
+
+		$(".changeBtn").html("<input type=\"button\" value=\"수정완료\" id=\"changeBtn\" />");
+
+		// $("#updateBtn").val("수정완료");
+		$("#changeBtn").click(update_submit);
+		$(".plusBtn").html("<input type=\"button\" value=\"취소\" id=\"resetBtn\" onclick=\"resetButn()\"/>");
+	}
+}
 
 function searchCheck() {
 	if ($("#searchName").val() == "") {
@@ -36,28 +74,60 @@ function memberCheck() {
 }
 
 
-function detailName(i){
+function update_submit() {
 	var xhttp = new XMLHttpRequest();
 
-	xhttp.onreadystatechange = function() {
+
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var text = this.responseText;
+			$(".msg").text(text);
+			detailName($("#worker_number").val());
+			$(".update_box").css("background-color", "lightgray");
+			$(".update_box").attr('readonly', true);
+			$(".plusBtn").text("");
+			$(".changeBtn").html("<input type=\"button\" value=\"수정\" id=\"updateBtn\" />");
+
+			$("#updateBtn").click(updateForm);
+			// $("#updateBtn").removeAttr("onclick",false);
+			
+
+
+
+		}
+	}
+	xhttp.open("POST", "update.do", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("worker_number=" + memberNumber.val() + "&name=" + memberName.val() + "&division=" + memberDivision.val() + "&position=" + memberPosition.val() +
+		"&join_date=" + memberJoinDate.val() + "&leave_date=" + memberLeaveDate.val() + "&active=" + memberActive.val() + "&memo=" + memberMemo.val() +
+		"&authority=" + memberAuthority.val() + "&phone=" + memberPhone.val() + "&phone2=" + memberPhone2.val() + "&e_mail=" + memberEmail.val() +
+		"&address=" + memberAdress.val());
+
+}
+
+function detailName(i) {
+	var xhttp = new XMLHttpRequest();
+
+
+	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var text = this.responseText;
 			var textList = text.split(",");
 			// textList에는 사원번호, 이름, 부서, 직책, 입사일, 퇴사일, 재직여부,
 			//메모, 관리자, 핸드폰, 자택, 이메일, 주소 순으로 들어있다.
-			$("#worker_number").val(textList[0]);
-			$("#name").val(textList[1]);
-			$("#division").val(textList[2]);
-			$("#posion").val(textList[3]);
-			$("#join_date").val(textList[4]);
-			$("#leave_date").val(textList[5]);
-			$("#active").val(textList[6]);
-			$("#memo").val(textList[7]);
-			$("#authority").val(textList[8]);
-			$("#phone").val(textList[9]);
-			$("#phone2").val(textList[10]);
-			$("#e_mail").val(textList[11]);
-			$("#adress").val(textList[12]);
+			memberNumber.val(textList[0]);
+			memberName.val(textList[1]);
+			memberDivision.val(textList[2]);
+			memberPosition.val(textList[3]);
+			memberJoinDate.val(textList[4]);
+			memberLeaveDate.val(textList[5]);
+			memberActive.val(textList[6]);
+			memberMemo.val(textList[7]);
+			memberAuthority.val(textList[8]);
+			memberPhone.val(textList[9]);
+			memberPhone2.val(textList[10]);
+			memberEmail.val(textList[11]);
+			memberAdress.val(textList[12]);
 
 
 		}
@@ -66,13 +136,13 @@ function detailName(i){
 
 	xhttp.open("POST", "detail.do", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("name=" + $("#searchName").val()+"&num="+i);
-	
+	xhttp.send("name=" + $("#searchName").val() + "&num=" + i);
+
 }
 function loadMemberList() {
 	var xhttp = new XMLHttpRequest();
 
-	xhttp.onreadystatechange = function() {
+	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			$("#memberList").html(this.response);
 
@@ -87,7 +157,7 @@ function loadMemberList() {
 
 function loadWorkerNumber() {
 	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
+	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			$(".checkText").text(this.responseText);
 			if (this.responseText == "인증되었습니다") {

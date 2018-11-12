@@ -13,7 +13,7 @@
 	<jsp:body>
 	<div class="container">
 <h2>인사 관리 </h2>
-
+<p class="msg"></p>
 <div class="navi">
 <div>		<input type="text" name="name" id="searchName" /> <input
 						type="button" value="검색" id="searchBtn" />
@@ -54,52 +54,52 @@
 		<table id="table_box">
 			<tr>
 				<td>사번</td>
-				<td><input type="text" name="worker_number" id="worker_number" /></td>
+				<td><input type="text" name="worker_number" id="worker_number" class="input_box" readonly/></td>
 				<td>부서</td>
-				<td><input type="text" name="division" id="division" }" /></td>
+				<td><input type="text" name="division" id="division" class="input_box update_box" readonly/></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="name" id="name" /></td>
+				<td><input type="text" name="name" id="name" class="input_box" readonly /></td>
 				<td>직책</td>
-				<td><input type="text" name="position" id="position" /></td>
+				<td><input type="text" name="position" id="position" class="input_box  update_box" readonly /></td>
 			</tr>
 			<tr>
 				<td>핸드폰</td>
-				<td><input type="text" name="phone" id="phone" /></td>
+				<td><input type="text" name="phone" id="phone" class="input_box  update_box" readonly/></td>
 				<td>입사일</td>
-				<td><input type="text" name="join_date" id="join_date" /></td>
+				<td><input type="text" name="join_date" id="join_date" class="input_box " readonly/></td>
 			</tr>
 			<tr>
 				<td>자택</td>
-				<td><input type="text" name="phone2" id="phone2" /></td>
+				<td><input type="text" name="phone2" id="phone2" class="input_box update_box" readonly/></td>
 				<td>퇴사일</td>
-				<td><input type="text" name="leave_date" id="leave_date" /></td>
+				<td><input type="text" name="leave_date" id="leave_date update_box" class="input_box" readonly/></td>
 			</tr>
 			<tr>
 				<td>e-mail</td>
-				<td><input type="text" name="e_mail" id="e_mail" /></td>
+				<td><input type="text" name="e_mail" id="e_mail" class="input_box update_box" readonly/></td>
 								
 								
 				<td>재직여부</td>
-				<td><input type="text" name="active" id="active" /></td>
+				<td><input type="text" name="active" id="active" class="input_box  update_box" readonly/></td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" name="address" id="address" /></td>
+				<td><input type="text" name="address" id="address" class="input_box update_box" readonly /></td>
 				<td>관리자</td>
-				<td><input type="text" name="authority" id="authority" /></td>
+				<td><input type="text" name="authority" id="authority" class="input_box" readonly /></td>
 			</tr>
 			<tr>
 				<td>메모</td>
-				<td><input type="text" name="memo" id="memo" /></td>
+				<td><input type="text" name="memo" id="memo" class="input_box  update_box" readonly /></td>
 				<td></td>
-				<td><input type="text" /></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="수정" /></td>
-				<td><input type="reset" value="취소" /></td>
 				<td></td>
+				<td class="changeBtn"><input type="button" value="수정" id="updateBtn" /></td>
+				<td class="plusBtn"></td>
 				<td><input type="button" value="인사기록"
 								onclick="location.href='${pageContext.request.contextPath}/sk_manager/management_list.do'" /><input
 								type="button" value="개인기록"

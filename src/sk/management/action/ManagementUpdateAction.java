@@ -35,6 +35,7 @@ public class ManagementUpdateAction implements CommandAction {
 		String author = (String) session.getAttribute("author");
 		Integer worker_number = Integer.parseInt(request.getParameter("worker_number"));
 		String text = "";
+		StringBuffer list = new StringBuffer();
 		int change_manager_num = 0;
 		int change_private_num = 0;
 
@@ -70,8 +71,9 @@ public class ManagementUpdateAction implements CommandAction {
 					data3.insertUpdate(update, worker_number);
 					change_private_num += 1;
 				}
+			} else {
+				list.append("(개인정보수정실패)사이트에 가입하지 않은 사원입니다.");
 			}
-			else{text = "(개인정보수정실패)사이트에 가입하지 않은 사원입니다.";}
 
 			// 인사정보 비교
 			ManagementInfo old_management = data2.getManagement(worker_number);
@@ -107,28 +109,30 @@ public class ManagementUpdateAction implements CommandAction {
 			//
 			if (change_manager_num > 0) {
 				if (data2.updateMember(new_management, worker_number) != 0) {
-					text = "사원 정보 수정에 성공하였습니다.";
+					list.append("(인사정보)사원 정보 수정에 성공하였습니다.");
 
 				} else {
-					text = "사원정보 수정에 실패하였습니다. ";
+					list.append("(인사정보)사원정보 수정에 실패하였습니다. ");
 					// 수정기록 다시 지우기
 				}
 			}
 
 			if (change_private_num > 0) {
 				if (data.updateMember(new_privacy, worker_number) != 0) {
-					text = "사원 정보 수정에 성공하였습니다.";
+					list.append("(개인정보)사원 정보 수정에 성공하였습니다.");
 
-				} // else {수정기록다시 지우기}}
-			} else {
-				session.setAttribute("message", text);
-				response.sendRedirect(request.getContextPath() + "/choice.jsp");
-				return null;
+				} else {
+					list.append("(개인정보)사원정보 수정에 실패하였습니다.");
+				}
+
 			}
-			session.setAttribute("message", text);
-
+			
+			text = list.toString();
+			response.setContentType("text/plain; charset=utf-8");
+			response.getWriter().write(text);
 		}
-		return "/choice.jsp";
+
+		return null;
 	}
 
 }
