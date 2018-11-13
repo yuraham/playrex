@@ -15,10 +15,11 @@
 			<table>
 				<tr>
 					<td>내용 및 결과</td>
-					<td><input type="text" name="met_text" value="${requestScope.post.met_text}"/></td>
+					<td colspan="2"><input type="text" name="met_text" value="${requestScope.post.met_text}"/></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="저장"/></td>
+					<td><small>한번 저장버튼을 누르면 돌아오지 않습니다.</small></td>
 					<td><a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a></td>
 				</tr>
 			</table>

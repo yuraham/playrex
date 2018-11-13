@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.controller.CommandAction;
-import sk.management.ManagementDao;
-import sk.management.ManagementInfo;
+//import sk.management.ManagementDao;
+//import sk.management.ManagementInfo;
 import yr.meeting.CommonMeetingAction;
 import yr.meeting.MeetingDao;
 import yr.meeting.MeetingInfo;

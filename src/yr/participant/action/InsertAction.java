@@ -25,9 +25,9 @@ public class InsertAction implements CommandAction{
 		ManagementDao memdata = new ManagementDao();
 		
 		ParticipantDao partdata = new ParticipantDao();		
-		List<MeetingInfo> list = data.allPost();
+		List<MeetingInfo> list = data.searchList(null, null);
 		
-		int allnum = list.get(list.size() - 1).getMet_numb();
+		int allnum = list.get(0).getMet_numb();
 		meeting = data.detailPost(allnum);
 		
 		String text = "";

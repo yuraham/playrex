@@ -20,9 +20,9 @@ public class PostAction2 implements CommandAction{
 		MeetingInfo post = util.mappingReqMemo(request);
 		MeetingDao data = new MeetingDao();
 		
-		List<MeetingInfo> list = data.allPost();
-		int allnum = list.get(list.size() - 1).getMet_numb();
-
+		List<MeetingInfo> list = data.searchList(null, null);
+		int allnum = list.get(0).getMet_numb();
+		
 		data.updatePost2(post, allnum);
 		String text = "detail.do?met_numb="+allnum;
 				
