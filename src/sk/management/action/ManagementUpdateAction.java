@@ -72,7 +72,7 @@ public class ManagementUpdateAction implements CommandAction {
 					change_private_num += 1;
 				}
 			} else {
-				list.append("(개인정보수정실패)사이트에 가입하지 않은 사원입니다.");
+				list.append("(개인정보)사이트에 가입하지 않은 사원입니다.<br>");
 			}
 
 			// 인사정보 비교
@@ -109,20 +109,20 @@ public class ManagementUpdateAction implements CommandAction {
 			//
 			if (change_manager_num > 0) {
 				if (data2.updateMember(new_management, worker_number) != 0) {
-					list.append("(인사정보)사원 정보 수정에 성공하였습니다.");
+					list.append("(인사정보)사원 정보 수정에 성공하였습니다.<br>");
 
 				} else {
-					list.append("(인사정보)사원정보 수정에 실패하였습니다. ");
+					list.append("(인사정보)사원정보 수정에 실패하였습니다. <br>");
 					// 수정기록 다시 지우기
 				}
 			}
 
 			if (change_private_num > 0) {
 				if (data.updateMember(new_privacy, worker_number) != 0) {
-					list.append("(개인정보)사원 정보 수정에 성공하였습니다.");
+					list.append("(개인정보)사원 정보 수정에 성공하였습니다.<br>");
 
 				} else {
-					list.append("(개인정보)사원정보 수정에 실패하였습니다.");
+					list.append("(개인정보)사원정보 수정에 실패하였습니다.<br>");
 				}
 
 			}

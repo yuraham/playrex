@@ -39,14 +39,7 @@
 					<td>직책:</td>
 					<td>${sessionScope.management.position }</td>
 				</tr>
-				 <tr>
-					<td>비밀번호 :</td>
-					<td>${sessionScope.privacy.pass }</td>
-				</tr>
-				 <tr>
-					<td>비밀번호 확인 :</td>
-					<td>${sessionScope.privacy.pass }</td>
-				</tr>
+				 
 				<tr>
 					<td>전화번호:</td>
 					<td>${sessionScope.privacy.phone }</td>

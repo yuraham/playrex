@@ -16,6 +16,8 @@ var memberNumber = $("#worker_number"),
 	memberEmail = $("#e_mail"),
 	memberAdress = $("#address");
 
+var oldDiv, oldPos, oldAct;
+
 
 
 
@@ -25,29 +27,111 @@ $(document).ready(function () {
 	$("#sBtn").click(formCheck);
 	$("#searchBtn").click(searchCheck);
 	$("#updateBtn").click(updateForm);
+	$("#memRegForm").click(insertMember);
+
+
 })
+
+function changeValue(old) {
+	if (old == oldDiv) {
+		if (confirm(memberName.val() + "님의 부서를 " + old + "팀에서 " + memberDivision.val() + "팀으로 변경하시겠습니까?")) { 
+			return
+
+		} else { return memberDivision.val(old) ;}
+		
+	} else if (old == oldPos) {
+			if (confirm(memberName.val() + "님의 직책을 " + old + "에서 " + memberPosition.val() + "으로 변경하시겠습니까?")) { 
+				return
+	
+			} else { return memberPosition.val(old) ;}
+	} else if (old == oldAct) {
+		if(old ==1){var oldTxt = "재직중"}else{oldTxt = "퇴 사"};
+		if(memberActive.val() ==1){var actTxt = "재직중"}else{actTxt = " 퇴 사"}
+
+		if (confirm(memberName.val() + "님의 재직여부를 " + oldTxt + "에서 " + actTxt + "(으)로 변경하시겠습니까?")) { 
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = date.getMonth()+1;
+			var day = date.getDate();
+			memberLeaveDate.val(year+"."+month+"."+day);
+
+		} else { return memberActive.val(old) ;}
+	}
+}
+
 
 
 
 function resetButn() {
-	detailName($("#worker_number").val());
+	if (memberNumber.val() != "") { detailName($("#worker_number").val()); }
 	$(".update_box").css("background-color", "lightgray");
 	$(".update_box").attr('readonly', true);
+	memberName.attr('readonly', true);
+	memberName.css("background-color", "lightgray");
 	$(".plusBtn").text("");
-	$("#updateBtn").val("수정");
+	$(".changeBtn").html("<input type=\"button\" value=\"수정\"	id=\"updateBtn\" />");
+	$("#updateBtn").click(updateForm);
+	$("#searchBtn").removeAttr('disabled');
+	$("#memRegForm").removeAttr('disabled');
+	$("#mangementList").removeAttr('disabled');
+	$("#privateList").removeAttr('disabled');
+	$("#searchName").removeAttr('disabled');
+	memberDivision.attr("disabled", true);
+	memberPosition.attr("disabled", true);
+	memberActive.attr("disabled", true);
+	if (memberNumber.val() == "") { memberDivision.val(""); }
+	loadMemberList();
+
+
+
+
 
 }
 
 function updateForm() {
 	if ($("#worker_number").val() != "") {
-		$(".update_box").css("background-color", "white");
+		//다른버튼 안눌리게 하기 
+		$("#searchName").attr("disabled", true);
+		$("#searchBtn").attr("disabled", true);
+		$("#memRegForm").attr("disabled", true);
+		$("#mangementList").attr("disabled", true);
+		$("#privateList").attr("disabled", true);
+		$(".list_num").attr("onclick", false);
+
+
+		oldDiv = memberDivision.val();
+		oldPos = memberPosition.val();
+		oldAct = memberActive.val();
 		$(".update_box").removeAttr('readonly');
 
+		memberDivision.change(function () { changeValue(oldDiv) });
+		memberPosition.change(function () { changeValue(oldPos) });
+		memberActive.change(function () { changeValue(oldAct) });
+		//선택박스로 바꿔주기 
+		// $(".changeSel1").html("<select name=\"division\" id=\"division\" class=\"input_box update_box\">" +
+		// "<option value=\"신입\">신입</option><option value=\"개발\">개발</option>"+
+		// "<option value=\"디자인\">디자인</option><option value=\"기획\">기획</option>"+
+		// "<option value=\"인사\">인사</option></select>");
+		// $(".changeSel2").html("<select name=\"position\" id=\"position\" class=\"sel input_box update_box\">"+
+		// "<option value=\"신입\">신입</option><option value=\"팀원\">팀원</option><option value=\"팀장\">팀장</option>"+
+		// "<option value=\"실장\">실장</option><option value=\"본부장\">본부장</option></select>");
+		// $(".changeSel3").html("<select name=\"active\" id=\"active\" class=\"sel input_box update_box\">"+
+		// "<option selected value=\"1\">재직중</option><option value=\"0\">퇴 사</option></select>");
+		$(".update_box").css("background-color", "white");
+		$(".update_box").removeAttr("disabled");
+		// //값 한번더 넣어주기 ....
+		// memberDivision.val(oldDiv);
+		// memberPosition.val(oldPos);
+		// memberActive.val(oldAct);
 		$(".changeBtn").html("<input type=\"button\" value=\"수정완료\" id=\"changeBtn\" />");
 
-		// $("#updateBtn").val("수정완료");
+
 		$("#changeBtn").click(update_submit);
 		$(".plusBtn").html("<input type=\"button\" value=\"취소\" id=\"resetBtn\" onclick=\"resetButn()\"/>");
+		$("#resetBtn").click(resetButn);
+
+	} else {
+		alert("사원을 선택 해 주세요.")
 	}
 }
 
@@ -73,35 +157,104 @@ function memberCheck() {
 
 }
 
+function insertMember() {
+	$("#searchName").val("");
+	$("#searchName").attr("disabled", true);
+	$("#searchBtn").attr("disabled", true);
+	$("#memRegForm").attr("disabled", true);
+	$("#mangementList").attr("disabled", true);
+	$("#privateList").attr("disabled", true);
+	$(".list_num").attr("onclick", false);
+	$(".input_box").val("");
+	memberName.css("background-color", "white");
+	memberName.removeAttr('readonly');
+	memberDivision.css("background-color", "white");
+	memberDivision.attr("disabled", false);////
+	memberPosition.css("background-color", "white");
+	memberPosition.attr("disabled", false);
+	memberMemo.css("background-color", "white");
+	memberMemo.removeAttr('readonly');
+	$(".changeBtn").html("<input type=\"button\" value=\"등록완료\" id=\"insertBtn\" />");
+	$("#insertBtn").click(insertFormcheck);
+	$(".plusBtn").html("<input type=\"button\" value=\"취소\" id=\"resetBtn\" onclick=\"resetButn()\"/>");
 
-function update_submit() {
+}
+function insertFormcheck() {
+	if (memberName.val() == "") { return alert("이름을 입력해주세요") }
+	if (memberDivision.val() == null) { return alert("부서를 선택해주세요") }
+	if (memberPosition.val() == null) { return alert("직책을 선택해주세요") }
+	insert_submit();
+}
+
+function insert_submit() {
+
 	var xhttp = new XMLHttpRequest();
-
-
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var text = this.responseText;
-			$(".msg").text(text);
-			detailName($("#worker_number").val());
-			$(".update_box").css("background-color", "lightgray");
-			$(".update_box").attr('readonly', true);
-			$(".plusBtn").text("");
+			$(".msg").html(text);
+			memberName.css("background-color", "lightgray");
+			memberName.attr('readonly', true);
+			memberDivision.css("background-color", "lightgray");
+			memberDivision.attr('readonly', true);
+			memberPosition.css("background-color", "lightgray");
+			memberPosition.attr('readonly', true);
+			memberMemo.css("background-color", "lightgray");
+			memberMemo.attr('readonly', true);
+			$("#searchBtn").removeAttr('disabled');
+			$("#memRegForm").removeAttr('disabled');
+			$("#mangementList").removeAttr('disabled');
+			$("#privateList").removeAttr('disabled');
+			$("#searchName").removeAttr('disabled');
+			loadMemberList();
 			$(".changeBtn").html("<input type=\"button\" value=\"수정\" id=\"updateBtn\" />");
-
 			$("#updateBtn").click(updateForm);
-			// $("#updateBtn").removeAttr("onclick",false);
-			
-
-
+			$(".plusBtn").text("");
+			memberDivision.attr("disabled", true);
+			memberPosition.attr("disabled", true);
 
 		}
 	}
+	
+	xhttp.open("POST", "m_register.do", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("name=" + memberName.val() + "&division=" + memberDivision.val() + "&position=" + memberPosition.val() +
+		"&memo=" + memberMemo.val());
+
+
+}
+
+function update_submit() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var text = this.responseText;
+			$(".msg").html(text);
+			detailName($("#worker_number").val());
+			$(".update_box").css("background-color", "lightgray");
+			$(".update_box").attr('readonly', true);
+			$("select").attr('disabled', true);
+			$(".plusBtn").text("");
+			$(".changeBtn").html("<input type=\"button\" value=\"수정\" id=\"updateBtn\" />");
+			$("#updateBtn").click(updateForm);
+			$("#searchBtn").removeAttr('disabled');
+			$("#memRegForm").removeAttr('disabled');
+			$("#mangementList").removeAttr('disabled');
+			$("#privateList").removeAttr('disabled');
+			$("#searchName").removeAttr('disabled');
+			loadMemberList();
+
+		}
+	}
+	//////////////////////////////////////////////////////
+	var levedate;
+	if(memberLeaveDate.val() == ""){levedate = null}else{levedate = memberLeaveDate.val();}
 	xhttp.open("POST", "update.do", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("worker_number=" + memberNumber.val() + "&name=" + memberName.val() + "&division=" + memberDivision.val() + "&position=" + memberPosition.val() +
 		"&join_date=" + memberJoinDate.val() + "&leave_date=" + memberLeaveDate.val() + "&active=" + memberActive.val() + "&memo=" + memberMemo.val() +
 		"&authority=" + memberAuthority.val() + "&phone=" + memberPhone.val() + "&phone2=" + memberPhone2.val() + "&e_mail=" + memberEmail.val() +
-		"&address=" + memberAdress.val());
+		"&address=" + memberAdress.val()+"&leave_date="+levedate);
 
 }
 
@@ -128,6 +281,7 @@ function detailName(i) {
 			memberPhone2.val(textList[10]);
 			memberEmail.val(textList[11]);
 			memberAdress.val(textList[12]);
+			if(memberLeaveDate.val() == "null"){ memberLeaveDate.val("")};
 
 
 		}

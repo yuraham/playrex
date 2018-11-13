@@ -1,4 +1,6 @@
    *{ box-sizing: border-box;}
+   
+
 
 .result_box{
 	border: 1px solid black;
@@ -40,3 +42,4 @@
 .input_box{
 	background-color: lightgray;
 }
+

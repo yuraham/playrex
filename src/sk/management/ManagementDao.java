@@ -10,7 +10,7 @@ public class ManagementDao extends RexConnection {
 	//// 인사정보 등록
 	public int insertManagement(ManagementInfo management) {
 		PreparedStatement pstmt = null;
-		String query = "INSERT INTO rex_management VALUES(null,?,?, ?, now(), null, 1, ?, null)";
+		String query = "INSERT INTO rex_management VALUES(null,?,?, ?, now(), null, 1, ?, '')";
 		int res = 0;
 		openConnection();
 		try {

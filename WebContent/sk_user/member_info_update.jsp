@@ -22,24 +22,26 @@
 				<tr>
 					<td>사원번호 :</td>
 					<td><input type="text" name="worker_number"
-						value="${sessionScope.management.worker_number}" readonly id="ID"/></td>
+						value="${sessionScope.management.worker_number}" readonly id="ID" class="input_box"/></td>
+						
+						
 				</tr>
 				<tr>
 					<td>이름 :</td>
 					<td><input type="text" name="name"
-						value="${sessionScope.management.name }" readonly id="NAME"/></td>
+						value="${sessionScope.management.name }" readonly id="NAME" class="input_box"/></td>
 				</tr>
 				<tr>
 					<td>부서:</td>
 					<td><input type="text" name="division"
-						value="${sessionScope.management.division }"  readonly /></td>
+						value="${sessionScope.management.division }"  readonly class="input_box" /></td>
 				</tr>
 				<tr>
 				</tr>
 				<tr>
 					<td>직책:</td>
 					<td><input type="text" name="position"
-						value="${sessionScope.management.position }" readonly /></td>
+						value="${sessionScope.management.position }" readonly class="input_box" /></td>
 				</tr>
 				 <tr>
 					<td>비밀번호 :</td>
@@ -75,7 +77,7 @@
 				<tr>
 					<td>입사일:</td>
 					<td><input type="text" name="join_date"
-						value="${sessionScope.management.join_date }" readonly /></td>
+						value="${sessionScope.management.join_date }" readonly class="input_box" /></td>
 				</tr>
 				<tr>
 					<td></td>

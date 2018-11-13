@@ -20,9 +20,13 @@ public class RegisterManagementAc implements CommandAction {
 		
 		if(data.insertManagement(management) !=0) {
 			text = "사원등록에 에 성공하였습니다.";
+		}else {
+			text = "사원등록에 실패하였습니다.";
 		}
-		request.setAttribute("message", text);
-		return "/sk_manager/management_main.jsp";
+		response.setContentType("text/plain; charset=utf-8");
+		response.getWriter().write(text);
+		
+		return null;
 	}
 
 }

@@ -18,7 +18,7 @@ public class CommonManagementAc {
 				Management.setName(request.getParameter("name"));
 				break;
 			case "division":
-				if (request.getParameter("division").equals(null)) {
+				if (request.getParameter("division").equals("")) {
 					Management.setDivision("신입");
 				} else {
 
@@ -26,7 +26,7 @@ public class CommonManagementAc {
 				}
 				break;
 			case "position":
-				if (request.getParameter("position").equals(null)) {
+				if (request.getParameter("position").equals("")) {
 					Management.setPosition("신입");
 				} else {
 					Management.setPosition(request.getParameter("position"));
@@ -43,6 +43,8 @@ public class CommonManagementAc {
 					Management.setMemo(request.getParameter("memo"));
 				}
 				break;
+			case "leave_date":
+				//코드 수정;; 
 			}
 
 		}
