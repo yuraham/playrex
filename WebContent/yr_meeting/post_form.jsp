@@ -34,6 +34,38 @@
 					<td><input type="text" name="met_writer"/></td>
 				</tr>
 				<tr>
+					<td>참가자1</td>
+					<td><input type="text" name="part1"/></td>
+				</tr>
+				<tr>
+					<td>참가자2</td>
+					<td><input type="text" name="part2"/></td>
+				</tr>
+				<tr>
+					<td>참가자3</td>
+					<td><input type="text" name="part3"/></td>
+				</tr>
+				<tr>
+					<td>참가자4</td>
+					<td><input type="text" name="part4"/></td>
+				</tr>
+				<tr>
+					<td>참가자5</td>
+					<td><input type="text" name="part5"/></td>
+				</tr>
+				<tr>
+					<td>참가자6</td>
+					<td><input type="text" name="part6"/></td>
+				</tr>
+				<tr>
+					<td>참가자7</td>
+					<td><input type="text" name="part7"/></td>
+				</tr>
+				<tr>
+					<td>참가자8</td>
+					<td><input type="text" name="part8"/></td>
+				</tr>
+				<tr>
 					<td><input type="submit" value="다음"/></td>
 					<td><a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a></td>
 				</tr>

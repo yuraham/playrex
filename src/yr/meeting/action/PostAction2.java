@@ -1,5 +1,7 @@
 package yr.meeting.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,10 +20,11 @@ public class PostAction2 implements CommandAction{
 		MeetingInfo post = util.mappingReqMemo(request);
 		MeetingDao data = new MeetingDao();
 		
-		int allnum = data.postCount(); 
-		int midx = allnum+1;
-		data.updatePost2(post, midx);
-		String text = "detail.do?met_numb="+midx;
+		List<MeetingInfo> list = data.allPost();
+		int allnum = list.get(list.size() - 1).getMet_numb();
+
+		data.updatePost2(post, allnum);
+		String text = "detail.do?met_numb="+allnum;
 				
 		return text;
 	}

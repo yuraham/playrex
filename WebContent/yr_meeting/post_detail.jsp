@@ -20,6 +20,11 @@
 			<p>작성자 : ${requestScope.member.name}</p>
 			<p>안건요약 : ${requestScope.post.met_subject}</p>
 			<p>${requestScope.post.met_text}</p>
+			<p>참가자 : 
+ 			<c:forEach var="i" items="${requestScope.memberlist}">
+				${i.name} 
+			</c:forEach>
+			</p>
 			<a href="${pageContext.request.contextPath}/yr_meeting/delete.do?met_numb=${requestScope.post.met_numb}">삭제하기</a>
 			<a href="${pageContext.request.contextPath}/yr_meeting/update_form.do?met_numb=${requestScope.post.met_numb}">수정하기</a>
 			<a href="${pageContext.request.contextPath}/yr_meeting/list.do">돌아가기</a>

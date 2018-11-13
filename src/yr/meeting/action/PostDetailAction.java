@@ -1,5 +1,8 @@
 package yr.meeting.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +11,8 @@ import sk.management.ManagementDao;
 import sk.management.ManagementInfo;
 import yr.meeting.MeetingDao;
 import yr.meeting.MeetingInfo;
+import yr.participant.ParticipantDao;
+import yr.participant.ParticipantInfo;
 
 public class PostDetailAction implements CommandAction{
 	
@@ -23,6 +28,7 @@ public class PostDetailAction implements CommandAction{
 		post = data.detailPost(midx);
 		ManagementInfo member = new ManagementInfo();
 		ManagementDao memdata = new ManagementDao();
+		ParticipantDao partdata = new ParticipantDao();
 		
 		if(post == null) {
 			text = "Fail: idx = " + midx;
@@ -33,10 +39,21 @@ public class PostDetailAction implements CommandAction{
 		
 		int memnumb = post.getMet_writer();
 		member = memdata.getManagement(memnumb);
-
+		
+		List<ParticipantInfo> part = partdata.allPart(midx);
+		List<ManagementInfo> memberlist= new ArrayList<>();
+		if (part != null) {
+			for (int i=0; i<part.size();i++) {
+				int memnum = part.get(i).getPar_enum();
+				memberlist.add(memdata.getManagement(memnum));
+			}
+		}
+		
 		request.setAttribute("member", member);
+		request.setAttribute("memberlist", memberlist);
 		request.setAttribute("post", post);
 		request.setAttribute("text", text);
+		request.setAttribute("part", part);
 		
 		return "post_detail.jsp";
 	}
