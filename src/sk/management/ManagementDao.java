@@ -155,6 +155,9 @@ public class ManagementDao extends RexConnection {
 		}
 		return res;
 	}
-
+	
+//	public int lastNum() {
+//		update getLastnum 참고하기
+//	}
 
 }

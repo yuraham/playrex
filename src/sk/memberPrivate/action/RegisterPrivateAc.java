@@ -37,6 +37,7 @@ public class RegisterPrivateAc implements CommandAction {
 		
 		}else {text = "등록되지 않은 사원번호 입니다.";}
 		request.setAttribute("message", text);
+		
 	return "privateRegister.jsp";
 	}
 
