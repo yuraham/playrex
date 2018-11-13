@@ -18,28 +18,36 @@ public class PostListAction implements CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("utf-8");
 		
-		MeetingDao data = new MeetingDao();
-		List<MeetingInfo> list = data.allPost();
 		ArrayList<ManagementInfo> member = new ArrayList<>();
 		ManagementDao memdata = new ManagementDao();
-
-		String text=null;
+		MeetingDao data = new MeetingDao();
 		
+		String col = request.getParameter("col");
+		String word = request.getParameter("word");
+//		String word = URLDecoder.decode(rword, "UTF-8");
+		List<MeetingInfo> searchlist = data.searchList(col, word);
+		String text = null;
+
 		int num = data.postCount();
-		if(list == null) {
+		if(num == 0) {
 			text = "등록된 회의록이 없습니다.";
 		} else {
-			text = "총 게시글 "+ num;
+			if (col == null) {
+				text = "총 게시글 "+ num;
+			} else {
+				text = "검색어 : "+word+"("+col+")"; 
+			}
+			
 		}
 		
-		for (int i=0; i<list.size();i++) {
-			int memnumb = list.get(i).getMet_writer();
+		
+		for (int i=0; i<searchlist.size();i++) {
+			int memnumb = searchlist.get(i).getMet_writer();
 			member.add(memdata.getManagement(memnumb));
 		}
-
+		
 		request.setAttribute("member", member);
-		request.setAttribute("num", num);
-		request.setAttribute("list", list);
+		request.setAttribute("list", searchlist);
 		request.setAttribute("text", text);
 		
 		return "post_list.jsp";

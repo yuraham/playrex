@@ -3,48 +3,51 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
-<t:genericpage>
-	<jsp:attribute name="head">
-        <title>index.jsp</title>
-    </jsp:attribute>
-	<jsp:attribute name="header">
-        <!-- 머릿말 추가 -->
-    </jsp:attribute>
-	<jsp:attribute name="footer">
-        <!-- 꼬릿말 추가 -->
-    </jsp:attribute>
-	<jsp:body>
-        <h1>홈</h1>
-        <c:if test="${not empty requestScope.message}">
-            <div>${requestScope.message }</div>
-        </c:if>
-        <c:if test="${not empty worker_number }">
-            로그인 되었습니다.
-        </c:if>
-        <c:if test="${empty worker_number }">
-       
-            <form
-				action="${pageContext.request.contextPath}/sk_user/login.do"
-				method="post">
-                <table>
-                	<tr>
-                		<td>사원번호</td>
-                		<td><input type="text" name="worker_number"
-							id="id" /></td>
-                	</tr>
-                	<tr>
-                		<td>비밀번호</td>
-                		<td><input type="password" name="pass" id="pass" /></td>
-                	</tr>
-                	<tr>
-                		<td colspan="2"><input type="submit" value="접속"
-							class='btn btn-primary' /></td>
-                	</tr>
-                </table>
-            </form>
-           
-        </c:if>
-        
-        
-    </jsp:body>
-</t:genericpage>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PLAYREX</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath}/static/main_css/main.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+<div class="fullheight">
+	<div class="col">
+    <c:if test="${not empty requestScope.message}">
+        <div>${requestScope.message }</div>
+    </c:if>
+    <c:if test="${not empty worker_number }">
+		<div class="mainfont">로그인 되었습니다.</div>
+		<a href="${pageContext.request.contextPath}/sk_user/logout.do">로그아웃</a>
+    </c:if>
+    <c:if test="${empty worker_number }">
+		<div class="main">
+			<div><hr noshade class="line1"></div>
+			<div><hr noshade class="line2"></div>
+			<div class="mainfont">PLAYREX</div>
+		</div>
+		<div class="loginbox">
+			<form
+			action="${pageContext.request.contextPath}/sk_user/login.do"
+			method="post">
+				<div class="mylogin">
+				<input type="text" name="worker_number" id="id" placeholder="사원번호"/><br />
+				<input type="password" name="pass" id="pass" placeholder="비밀번호"/><br />
+				</div>
+				<div class="btnbox">
+					<input type="submit" value="접속" class='loginbtn' />
+				</div>
+			</form>
+		</div>
+		<div class="loginbox">
+		<p class="logintext"><a href="${pageContext.request.contextPath}/sk_user/privateRegisterForm.jsp">회원가입</a></p>
+		</div>
+	</c:if>
+	</div>
+</div>
+</body>
+</html>

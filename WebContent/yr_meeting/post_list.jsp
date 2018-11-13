@@ -14,11 +14,11 @@
 		<div class="container">
 		 <h1>회의록리스트</h1>
 			${requestScope.num }
-	 		<table class="table">
+			<table class="table">
+			<tr>
+				<td colspan="5">${requestScope.text}</td>
+			</tr>
 			<thead>
-				<tr>
-					<th colspan="4">${requestScope.text}</th>
-				</tr>
 			</thead>
 			<tbody>
  	 		<c:forEach var="i" items="${requestScope.list}" varStatus="status">
@@ -33,6 +33,20 @@
  			</tbody>
 		</table>
 		<a href="${pageContext.request.contextPath}/yr_meeting/post_form.do">새글쓰기</a>
+		</div>
+ 		<div>
+			<form method="GET" action="${pageContext.request.contextPath}/yr_meeting/list.do">
+				<select name="col">
+					<option value="none">전체</option>
+					<option value="title">제목</option>
+					<option value="titext">제목/내용</option>
+					<option value="writer">작성자</option>
+					<option value="part">참석자</option>
+					<option value="project">프로젝트명</option>
+				</select>
+				<input type="text" name="word"/>
+				<input type="submit" value="검색"/>
+			</form>
 		</div>
 		</c:if>
 		<c:if test="${empty worker_number }">

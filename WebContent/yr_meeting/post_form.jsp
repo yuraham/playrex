@@ -15,58 +15,59 @@
 			<table>
 				<tr>
 					<td>제목</td>
-					<td><input type="text" name="met_title"/></td>
+					<td colspan="2"><input type="text" name="met_title"/></td>
 				</tr>
 				<tr>
 					<td>회의실</td>
-					<td><input type="text" name="met_room"/></td>
+					<td colspan="2"><input type="text" name="met_room"/></td>
 				</tr>
 				<tr>
 					<td>프로젝트명</td>
-					<td><input type="text" name="met_project"/></td>
+					<td colspan="2"><input type="text" name="met_project"/></td>
 				</tr>
 				<tr>
 					<td>안건요약</td>
-					<td><input type="text" name="met_subject"/></td>
+					<td colspan="2"><input type="text" name="met_subject"/></td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="met_writer"/></td>
+					<td colspan="2"><input type="text" name="met_writer"/></td>
 				</tr>
 				<tr>
 					<td>참가자1</td>
-					<td><input type="text" name="part1"/></td>
+					<td colspan="2"><input type="text" name="part1"/></td>
 				</tr>
 				<tr>
 					<td>참가자2</td>
-					<td><input type="text" name="part2"/></td>
+					<td colspan="2"><input type="text" name="part2"/></td>
 				</tr>
 				<tr>
 					<td>참가자3</td>
-					<td><input type="text" name="part3"/></td>
+					<td colspan="2"><input type="text" name="part3"/></td>
 				</tr>
 				<tr>
 					<td>참가자4</td>
-					<td><input type="text" name="part4"/></td>
+					<td colspan="2"><input type="text" name="part4"/></td>
 				</tr>
 				<tr>
 					<td>참가자5</td>
-					<td><input type="text" name="part5"/></td>
+					<td colspan="2"><input type="text" name="part5"/></td>
 				</tr>
 				<tr>
 					<td>참가자6</td>
-					<td><input type="text" name="part6"/></td>
+					<td colspan="2"><input type="text" name="part6"/></td>
 				</tr>
 				<tr>
 					<td>참가자7</td>
-					<td><input type="text" name="part7"/></td>
+					<td colspan="2"><input type="text" name="part7"/></td>
 				</tr>
 				<tr>
 					<td>참가자8</td>
-					<td><input type="text" name="part8"/></td>
+					<td colspan="2"><input type="text" name="part8"/></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="다음"/></td>
+					<td><small>다음 버튼을 누르면 저장됩니다.</small></td>
 					<td><a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a></td>
 				</tr>
 			</table>

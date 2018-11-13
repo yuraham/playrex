@@ -65,8 +65,8 @@ public class ParticipantDao extends RexConnection{
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, met_numb);
-			pstmt.setInt(2, man_numb);
+			pstmt.setInt(1, man_numb);
+			pstmt.setInt(2, met_numb);
 			res = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
