@@ -19,10 +19,10 @@ public class PrivateListAction implements CommandAction {
 		InsertUpdateInfo update = new InsertUpdateInfo();
 		StringBuffer list = new StringBuffer();
 
-		ManagementInfo management = (ManagementInfo) session.getAttribute("management");
-		Integer worker_number = management.getWorker_number();
+		Integer worker_number = Integer.parseInt(request.getParameter("worker_number"));
 
-		int lastNum = data.getLastNum("개인정보"); // 제일 최근 수정된 내역의 번호
+		int lastNum = data.getLastNum("개인정보", worker_number);// 제일 최근 수정된 내역의 번호
+		if(lastNum != 0) {
 		for (int i = lastNum; i > lastNum - 15; i--) {
 			if (data.isNumPrivate(i)) {
 				update = data.getList(worker_number, "개인정보", i);
@@ -40,7 +40,7 @@ public class PrivateListAction implements CommandAction {
 				list.append("</td></tr>");
 			}
 
-		}
+		}}else {list.append("<tr>수정 내역이 존재하지 않습니다.</tr>");}
 
 		session.setAttribute("changeList", list);
 

@@ -17,9 +17,14 @@ public class RegisterManagementAc implements CommandAction {
 		
 		ManagementDao data = new ManagementDao();
 		String text = null;
+		Integer num = 0;
+		String name = "";
 		
 		if(data.insertManagement(management) !=0) {
-			text = "사원등록에 에 성공하였습니다.";
+			num = data.lastNum();
+			name = data.getManagement(num).getName();
+			
+			text = "사원번호 "+num+"번 "+ name+" 사원 등록에 에 성공하였습니다.";
 		}else {
 			text = "사원등록에 실패하였습니다.";
 		}

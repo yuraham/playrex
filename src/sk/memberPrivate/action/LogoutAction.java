@@ -11,10 +11,11 @@ public class LogoutAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		HttpSession session = request.getSession();
-		String name = (String)session.getAttribute("name");
+		Integer worker_number = (Integer)session.getAttribute("worker_number");
 
-		if (name != null) 
+		if (worker_number != null) 
 			session.invalidate();
+		
 		
 		response.sendRedirect(request.getContextPath() + "/home.do");
 		

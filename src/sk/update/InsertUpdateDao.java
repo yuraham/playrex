@@ -59,15 +59,16 @@ public class InsertUpdateDao extends RexConnection {
 
 	}
 
-	public int getLastNum(String category) {
+	public int getLastNum(String category, int worker_number) {
 		PreparedStatement pstmt = null;
 		InsertUpdateInfo update = new InsertUpdateInfo();
 		int num = 0;
-		String query = "SELECT * FROM rex_update WHERE category=? ORDER BY num DESC LIMIT 1 ";
+		String query = "SELECT * FROM rex_update WHERE category=? AND worker_number=? ORDER BY num DESC LIMIT 1 ";
 		openConnection();
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, category);
+			pstmt.setInt(2, worker_number);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			update.setNum(rs.getInt("num"));

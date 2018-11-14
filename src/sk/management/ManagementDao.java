@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import playconnection.RexConnection;
+import sk.update.InsertUpdateInfo;
 
 public class ManagementDao extends RexConnection {
 
@@ -50,8 +51,8 @@ public class ManagementDao extends RexConnection {
 		}
 		return res;
 	}
-	
-	// 사원 등록 조회 
+
+	// 사원 등록 조회
 	public boolean isManagement2(int worker_num) {
 		PreparedStatement pstmt = null;
 		String query = "SELECT * FROM rex_management where worker_number=?";
@@ -72,7 +73,6 @@ public class ManagementDao extends RexConnection {
 		}
 		return res;
 	}
-	
 
 	// 인사 정보 조회
 	public ManagementInfo getManagement(Integer worker_number) {
@@ -147,7 +147,7 @@ public class ManagementDao extends RexConnection {
 			pstmt.setString(5, management.getMemo());
 			pstmt.setInt(6, worker_number);
 			res = pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -155,9 +155,25 @@ public class ManagementDao extends RexConnection {
 		}
 		return res;
 	}
-	
-//	public int lastNum() {
-//		update getLastnum 참고하기
-//	}
 
+	public int lastNum() {
+		PreparedStatement pstmt = null;
+		ManagementInfo management = new ManagementInfo();
+		int num = 0;
+		String query = "SELECT * FROM rex_management ORDER BY join_date DESC LIMIT 1";
+		openConnection();
+		try {
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			management.setWorker_number(rs.getInt("worker_number"));
+			rs.close();
+			num = management.getWorker_number();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return num;
+	}
 }

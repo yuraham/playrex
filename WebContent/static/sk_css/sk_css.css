@@ -4,7 +4,7 @@
 
 .result_box{
 	border: 1px solid black;
-	height: 200px;
+	height: 250px;
 	width: 100xp;
 	padding-top: 20px;
 	
@@ -14,14 +14,17 @@
 
 #table_box{
 	float : left;
-	padding: 20px;
+	padding: 60px;
 	margin: 20px;
+	
 }
 
 .navi{
 	float: left;
 	width: 250x;
-	height: 320px;
+	height: 350px;
+	border: 1px solid black;
+	padding : 20px;
 }
 
 .right_txt1{
@@ -39,7 +42,54 @@
 	padding-left: 55px;
 }
 
+.input_move{
+	position: relative;
+	left:20px;
+}
+
 .input_box{
 	background-color: lightgray;
 }
 
+#authority{
+	width: 160px;
+}
+
+#memRegForm{
+	position: relative;
+	left: 420px;
+	margin-top:20px;
+	
+}
+
+.big_box{
+	border: 1px solid black;
+	height: 520px;
+	width: 840px;
+	
+}
+.msg{
+	border:1px solid black;
+	padding-top:10px;
+	height: 80px;
+	width: 800px;
+	
+}
+
+#privateList, #mangementList{
+	position: relative;
+	left:15px;
+	top:15px;
+}
+
+.changeBtn{
+	position: relative;
+	top:15px;
+}
+
+#resetBtn{
+	position: relative;
+	top:15px;
+	left:-100px;
+	
+}
