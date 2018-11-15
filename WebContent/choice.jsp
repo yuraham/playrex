@@ -6,7 +6,7 @@
 
 <t:genericpage>
 	<jsp:attribute name="head">
-        <title>index.jsp</title>
+        <title>PLAYREX</title>
     </jsp:attribute>
 	<jsp:attribute name="header">
         <!-- 머릿말 추가 -->
@@ -15,19 +15,17 @@
         <!-- 꼬릿말 추가 -->
     </jsp:attribute>
 	<jsp:body>
-	<div class="container" style='width: 600px;'>
-	<h2> palyrex </h2>
+	<div class="container choice_body">
+	
 	<c:if test="${not empty requestScope.message}">
             <div>${requestScope.message }</div>
         </c:if>
         <c:if test="${not empty worker_number }">
-<a
-				href="${pageContext.request.contextPath}/sk_manager/management_info.do">인사
-			관리</a>
-			<br /> <a
-				href="${pageContext.request.contextPath}/yr_meeting/list.do">회의록
-			관리</a>
-			<br />
+        <input type="button" class="cho_Btn" onclick="location.href='${pageContext.request.contextPath}/sk_manager/management_info.do'" value="인사 관리" />
+        <input type="button" class="cho_Btn" onclick="location.href='${pageContext.request.contextPath}/yr_meeting/list.do'" value="회의록관리" />
+        
+        
+
         </c:if>
         <c:if test="${empty worker_number }">
         

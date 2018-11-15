@@ -100,3 +100,21 @@
        
         height: 220px;
 }
+
+.cho_Btn{
+	width: 400px;
+	height: 400px;
+	background-color: #34336F;
+	margin:60px 20px 20px 20px;
+	color: #FFC90E;
+    font-weight:bold;
+    font-size: 2em;
+}
+
+.choice_body{
+	width: auto;
+	height: 600px;
+	display: flex;
+	justify-content: center;
+
+}
