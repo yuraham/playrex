@@ -11,15 +11,15 @@
     <jsp:body>
 		<c:if test="${not empty worker_number}">
 	        <div class="container">
-			<form action="${pageContext.request.contextPath}/yr_meeting/uproad_data.do?met_numb=${requestScope.post.met_numb}" method="post" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/yr_meeting/post2.do" method="post" enctype="Multipart/form-data">
 				<table>
 					<tr>
 						<td>내용 및 결과</td>
 						<td><input type="text" name="met_text"/></td>
 					</tr>
 					<tr>
-						<td>파일첨부</td>
-						<td><input type="file" name="file" multiple=""/></td>
+						<td>파일명 : </td>
+						<td><input type="file" name="fileName"/></td>
 					</tr>
 					<tr>
 						<td><input type="submit" value="저장"/></td>

@@ -1,29 +1,30 @@
-//package yr.meetingdata.action;
-//
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//
-//import com.oreilly.servlet.MultipartRequest;
-//import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-//
-//import member.controller.CommandAction;
-//
-//public class UproadDataAction implements CommandAction{
-//	@Override
-//	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-//		request.setCharacterEncoding("utf-8");
-//		
-//		MultipartRequest multi = null;
-//		int sizeLimit = 10*1024*1024;
-//		String uploadPath = request.getRealPath("/upload");
-//		
-//		try { 
-//			multi=new MultipartRequest(request, savePath, sizeLimit, "UTF-8", new DefaultFileRenamePolicy());
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		String filename = multi.getFilesystemName("filename");
-//		String 
-//	}
-//}
+package yr.meetingdata.action;
+
+//import java.io.File;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.controller.CommandAction;
+import yr.meeting.MeetingDao;
+import yr.meeting.MeetingInfo;
+import yr.meetingdata.MeetingDataDao;
+
+public class UproadDataAction implements CommandAction{
+	@Override
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		request.setCharacterEncoding("utf-8");
+		
+		MeetingDao data = new MeetingDao();
+		MeetingDataDao mdata = new MeetingDataDao();
+		
+		mdata.insertFile(request);
+		List<MeetingInfo> list = data.searchList(null, null);
+		int allnum = list.get(0).getMet_numb();
+		
+		String text = "detail.do?met_numb="+allnum;
+		
+		return text;
+	}
+}

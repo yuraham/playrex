@@ -21,8 +21,9 @@
         <div>${requestScope.message }</div>
     </c:if>
     <c:if test="${not empty worker_number }">
-		<div class="mainfont">로그인 되었습니다.</div>
+		<div class="mainfont"><h1>로그인 되었습니다.</h1></div>
 		<a href="${pageContext.request.contextPath}/sk_user/logout.do">로그아웃</a>
+		<a href="${pageContext.request.contextPath}/choice.jsp">선택화면</a>
     </c:if>
     <c:if test="${empty worker_number }">
 		<div class="main">

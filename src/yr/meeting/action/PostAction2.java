@@ -24,8 +24,7 @@ public class PostAction2 implements CommandAction{
 		int allnum = list.get(0).getMet_numb();
 		
 		data.updatePost2(post, allnum);
-		String text = "detail.do?met_numb="+allnum;
-				
-		return text;
+		
+		return "uproad_data.do";
 	}
 }
