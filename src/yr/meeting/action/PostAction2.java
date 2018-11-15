@@ -25,6 +25,6 @@ public class PostAction2 implements CommandAction{
 		
 		data.updatePost2(post, allnum);
 		
-		return "uproad_data.do";
+		return "upload_data.do";
 	}
 }

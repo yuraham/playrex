@@ -6,12 +6,13 @@
 
 <t:genericpage>
     <jsp:attribute name="head">
-        <title>Memo List</title>
+        <title>${requestScope.post.met_numb} Detail</title>
         </jsp:attribute>
     <jsp:body>
 		<c:if test="${not empty worker_number }">
 		<div class="container">
 			<h1>디테일페이지</h1>
+			<hr>
 			<p>${requestScope.post.met_title}</p>
 			<p>${requestScope.post.met_numb}번 글</p>
 			<p>회의실 : ${requestScope.post.met_room}</p>
@@ -20,11 +21,21 @@
 			<p>작성자 : ${requestScope.member.name}</p>
 			<p>안건요약 : ${requestScope.post.met_subject}</p>
 			<p>${requestScope.post.met_text}</p>
-			<p>참가자 : 
- 			<c:forEach var="i" items="${requestScope.memberlist}">
-				${i.name} 
-			</c:forEach>
-			</p>
+			<c:if test="${requestScope.memberlist.size() > 0}">
+				<p>참가자 : 
+	 			<c:forEach var="i" items="${requestScope.memberlist}">
+					${i.name} 
+				</c:forEach>
+				</p>
+			</c:if>
+			<c:if test="${requestScope.metlist.size() > 0}">
+				<hr>
+				<p>등록 파일 : </p>
+				<c:forEach var="i" items="${requestScope.metlist}">
+					<p>${i.data_name}</p>
+				</c:forEach>
+			</c:if>
+			<hr>
 			<a href="${pageContext.request.contextPath}/yr_meeting/delete.do?met_numb=${requestScope.post.met_numb}">삭제하기</a>
 			<a href="${pageContext.request.contextPath}/yr_meeting/update_form.do?met_numb=${requestScope.post.met_numb}">수정하기</a>
 			<a href="${pageContext.request.contextPath}/yr_meeting/list.do">돌아가기</a>

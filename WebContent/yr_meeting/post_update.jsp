@@ -11,44 +11,44 @@
     <jsp:body>
 		<c:if test="${not empty worker_number }">
         <div class="container">
+        <small>다음버튼을 누르면 이전 내용이 돌아오지 않습니다. 신중히 저장해주세요.</small>
 		<form action="${pageContext.request.contextPath}/yr_meeting/update.do?met_numb=${requestScope.post.met_numb}" method="post">
         ${requestScope.list }
 			<table>
 				<tr>
 					<td>제목</td>
-					<td colspan="2"><input type="text" name="met_title" value="${requestScope.post.met_title}"/></td>
+					<td><input type="text" name="met_title" value="${requestScope.post.met_title}"/></td>
 				</tr>
 				<tr>
 					<td>회의실</td>
-					<td colspan="2"><input type="text" name="met_room" value="${requestScope.post.met_room}"/></td>
+					<td><input type="text" name="met_room" value="${requestScope.post.met_room}"/></td>
 				</tr>
 				<tr>
 					<td>프로젝트명</td>
-					<td colspan="2"><input type="text" name="met_project" value="${requestScope.post.met_project}"/></td>
+					<td><input type="text" name="met_project" value="${requestScope.post.met_project}"/></td>
 				</tr>
 				<tr>
 					<td>안건요약</td>
-					<td colspan="2"><input type="text" name="met_subject" value="${requestScope.post.met_subject}"/></td>
+					<td><input type="text" name="met_subject" value="${requestScope.post.met_subject}"/></td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td colspan="2"><input type="text" name="met_writer" value="${requestScope.post.met_writer}"/></td>
+					<td><input type="text" name="met_writer" value="${requestScope.post.met_writer}"/></td>
 				</tr>
 				<c:forEach var="i" items="${requestScope.part}" varStatus="status">
 					<tr>
 						<td>참석자${status.index+1} : </td>
-						<td colspan="2"><input type="text" name="part${status.index+1}" value="${i.par_enum}"/></td>
+						<td><input type="text" name="part${status.index+1}" value="${i.par_enum}"/></td>
 					</tr>
 				</c:forEach>
 				<c:forEach var="j" begin="${requestScope.part.size()+1}" end="8" step="1">
 					<tr>
 						<td>참석자${j} : </td>
-						<td colspan="2"><input type="text" name="part${j}"/></td>
+						<td><input type="text" name="part${j}"/></td>
 					</tr>
 				</c:forEach>
 				<tr>
-					<td><input type="submit" value="저장"/></td>
-					<td><small>한번 저장버튼을 누르면 돌아오지 않습니다.</small></td>
+					<td><input type="submit" value="다음"/></td>
 					<td><a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a></td>
 				</tr>
 			</table>

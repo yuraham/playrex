@@ -25,7 +25,9 @@
  	 			<tr>
 					<td>${i.met_numb}</td>
 					<td width="20%">${i.met_date}</td>
-					<td width="48%"><a href="${pageContext.request.contextPath}/yr_meeting/detail.do?met_numb=${i.met_numb}">${i.met_title}</a></td>
+					<td width="48%"><a href="${pageContext.request.contextPath}/yr_meeting/detail.do?met_numb=${i.met_numb}">${i.met_title}</a>
+						<c:if test="${requestScope.metData[status.index] > 0}"> [파일]</c:if>
+					</td>
 					<td width="15%">${member[status.index].name}</td>
 					<td width="15%">${i.met_project}</td>
 				</tr>

@@ -11,6 +11,8 @@ import sk.management.ManagementDao;
 import sk.management.ManagementInfo;
 import yr.meeting.MeetingDao;
 import yr.meeting.MeetingInfo;
+import yr.meetingdata.MeetingDataDao;
+import yr.meetingdata.MeetingDataInfo;
 import yr.participant.ParticipantDao;
 import yr.participant.ParticipantInfo;
 
@@ -29,6 +31,7 @@ public class PostDetailAction implements CommandAction{
 		ManagementInfo member = new ManagementInfo();
 		ManagementDao memdata = new ManagementDao();
 		ParticipantDao partdata = new ParticipantDao();
+		MeetingDataDao metDatadao = new MeetingDataDao();
 		
 		if(post == null) {
 			text = "Fail: idx = " + midx;
@@ -42,6 +45,8 @@ public class PostDetailAction implements CommandAction{
 		
 		List<ParticipantInfo> part = partdata.allPart(midx);
 		List<ManagementInfo> memberlist= new ArrayList<>();
+		List<MeetingDataInfo> metlist= new ArrayList<>();
+		metlist=(metDatadao.allData(midx));
 		if (part != null) {
 			for (int i=0; i<part.size();i++) {
 				int memnum = part.get(i).getPar_enum();
@@ -52,8 +57,9 @@ public class PostDetailAction implements CommandAction{
 		request.setAttribute("member", member);
 		request.setAttribute("memberlist", memberlist);
 		request.setAttribute("post", post);
-		request.setAttribute("text", text);
 		request.setAttribute("part", part);
+		request.setAttribute("text", text);
+		request.setAttribute("metlist", metlist);
 		
 		return "post_detail.jsp";
 	}

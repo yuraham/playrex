@@ -11,18 +11,29 @@
     <jsp:body>
 		<c:if test="${not empty worker_number }">
         <div class="container">
-		<form action="${pageContext.request.contextPath}/yr_meeting/update2.do?met_numb=${requestScope.post.met_numb}" method="post">
+        <small>다음버튼을 누르면 이전 돌아오지 않습니다. 신중히 저장해주세요.</small>
+		<form action="${pageContext.request.contextPath}/yr_meeting/update2.do?met_numb=${requestScope.post.met_numb}" method="post" enctype="Multipart/form-data">
 			<table>
 				<tr>
 					<td>내용 및 결과</td>
-					<td colspan="2"><input type="text" name="met_text" value="${requestScope.post.met_text}"/></td>
+					<td><input type="text" name="met_text" value="${requestScope.post.met_text}"/></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="저장"/></td>
-					<td><small>한번 저장버튼을 누르면 돌아오지 않습니다.</small></td>
+					<td>파일추가 : </td>
+					<td><input type="file" name="fileName"/></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="다음"/></td>
 					<td><a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a></td>
 				</tr>
 			</table>
+			<c:if test="${requestScope.metlist.size() > 0}">
+				<hr>
+				<p>등록 파일 : </p>
+				<c:forEach var="i" items="${requestScope.metlist}">
+					<p>${i.data_name}  <a href="${pageContext.request.contextPath}/yr_meeting/delete_data.do?met_numb=${requestScope.post.met_numb}&data_numb=${i.data_numb}">삭제하기</a></p>
+				</c:forEach>
+			</c:if>
 		</form>
 		</div>
 		</c:if>
