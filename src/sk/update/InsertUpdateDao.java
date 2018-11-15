@@ -82,15 +82,16 @@ public class InsertUpdateDao extends RexConnection {
 		return num;
 
 	}
-	
-	public boolean isNumManagement(int num) {
+
+	public boolean isNumManagement(int num, int worker_number) {
 		PreparedStatement pstmt = null;
 		boolean res = false;
-		String query="Select * from rex_update where num = ? AND category=\"인사정보\"";
+		String query = "Select * from rex_update where num = ? AND category=\"인사정보\" AND worker_number=?";
 		openConnection();
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, num);
+			pstmt.setInt(2, worker_number);
 			ResultSet rs = pstmt.executeQuery();
 			res = rs.next();
 			rs.close();
@@ -101,15 +102,16 @@ public class InsertUpdateDao extends RexConnection {
 		}
 		return res;
 	}
-	
-	public boolean isNumPrivate(int num) {
+
+	public boolean isNumPrivate(int num, int worker_number) {
 		PreparedStatement pstmt = null;
 		boolean res = false;
-		String query="Select * from rex_update where num = ? AND category=\"개인정보\"";
+		String query = "Select * from rex_update where num = ? AND category=\"개인정보\" AND worker_number=?";
 		openConnection();
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, num);
+			pstmt.setInt(2, worker_number);
 			ResultSet rs = pstmt.executeQuery();
 			res = rs.next();
 			rs.close();

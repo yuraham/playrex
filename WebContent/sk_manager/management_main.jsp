@@ -36,10 +36,10 @@
 
 	</table>
 					<div class="result_box">
-					<span id="memberList">
+					<p id="memberList">
 					
 					
-					</span>
+					</p>
 					${requestScope.memberList }
 	
 		</div>

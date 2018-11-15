@@ -39,7 +39,7 @@
 }
 
 .list_txt{
-	padding-left: 55px;
+	padding-left: 49px;
 }
 
 .input_move{
@@ -69,6 +69,7 @@
 	
 }
 .msg{
+	
 	border:1px solid black;
 	padding-top:10px;
 	height: 80px;
@@ -92,4 +93,28 @@
 	top:15px;
 	left:-100px;
 	
+}
+#memberList{
+	overflow: scroll;
+	overflow-x: hidden;
+       
+        height: 220px;
+}
+
+.cho_Btn{
+	width: 400px;
+	height: 400px;
+	background-color: #34336F;
+	margin:60px 20px 20px 20px;
+	color: #FFC90E;
+    font-weight:bold;
+    font-size: 2em;
+}
+
+.choice_body{
+	width: auto;
+	height: 600px;
+	display: flex;
+	justify-content: center;
+
 }

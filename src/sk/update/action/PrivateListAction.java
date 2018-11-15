@@ -23,11 +23,13 @@ public class PrivateListAction implements CommandAction {
 
 		int lastNum = data.getLastNum("개인정보", worker_number);// 제일 최근 수정된 내역의 번호
 		if(lastNum != 0) {
+			int j=1;
 		for (int i = lastNum; i > lastNum - 15; i--) {
-			if (data.isNumPrivate(i)) {
+			if (data.isNumPrivate(i, worker_number)) {
 				update = data.getList(worker_number, "개인정보", i);
-
 				list.append("<tr><td>");
+				list.append(j);
+				list.append("</td><td>");
 				list.append(update.getWorker_number());
 				list.append("</td><td>");
 				list.append(update.getFiled_name());
@@ -38,6 +40,7 @@ public class PrivateListAction implements CommandAction {
 				list.append("</td><td>");
 				list.append(update.getUpdate_date());
 				list.append("</td></tr>");
+				j++;
 			}
 
 		}}else {list.append("<tr>수정 내역이 존재하지 않습니다.</tr>");}
