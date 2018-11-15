@@ -12,10 +12,11 @@ public class CommonUpdateAction {
 	public InsertUpdateInfo MappingreqUpdate(HttpServletRequest request) {
 		InsertUpdateInfo update = new InsertUpdateInfo();
 		Enumeration<String> parameterNames = request.getParameterNames();
-		
-		while(parameterNames.hasMoreElements()) {
-			String paramName=(String) parameterNames.nextElement();
-			switch(paramName) {
+
+		while (parameterNames.hasMoreElements()) {
+			String paramName = (String) parameterNames.nextElement();
+
+			switch (paramName) {
 			case "num":
 				update.setNum(Integer.parseInt(request.getParameter("num")));
 				break;
@@ -38,80 +39,92 @@ public class CommonUpdateAction {
 		}
 		return update;
 	}
-	
+
 	public InsertUpdateInfo MappingMenagerUpdate(String str, ManagementInfo old_data, ManagementInfo new_data) {
 		InsertUpdateInfo update = new InsertUpdateInfo();
-		
-			switch(str) {
-			case "active":
-				update.setCategory("인사정보");
-				update.setFiled_name("재직여부");
-				update.setOld_data(old_data.getActive());
-				update.setNew_data(new_data.getActive());
-				break;
-			case "division":
-				update.setCategory("인사정보");
-				update.setFiled_name("부서");
-				update.setOld_data(old_data.getDivision());
-				update.setNew_data(new_data.getDivision());
-				break;
-			case "position":
-				update.setCategory("인사정보");
-				update.setFiled_name("직책");
-				update.setOld_data(old_data.getPosition());
-				update.setNew_data(new_data.getPosition());
-				break;
-			case "leave_date":
-				update.setCategory("인사정보");
-				update.setFiled_name("퇴사일");
-				update.setOld_data(old_data.getLeave_date().toString());
-				update.setNew_data(new_data.getLeave_date().toString());
-				break;
-			case "memo":
-				update.setCategory("인사정보");
-				update.setFiled_name("메모");
-				update.setOld_data(old_data.getMemo());
-				update.setNew_data(new_data.getMemo());
-				break;
+		String stringtext = "";
+		String stringNewtext = "";
+		switch (str) {
+		case "active":
+			update.setCategory("인사정보");
+			update.setFiled_name("재직여부");
+			update.setOld_data(old_data.getActive());
+			update.setNew_data(new_data.getActive());
+			break;
+		case "division":
+			update.setCategory("인사정보");
+			update.setFiled_name("부서");
+			update.setOld_data(old_data.getDivision());
+			update.setNew_data(new_data.getDivision());
+			break;
+		case "position":
+			update.setCategory("인사정보");
+			update.setFiled_name("직책");
+			update.setOld_data(old_data.getPosition());
+			update.setNew_data(new_data.getPosition());
+			break;
+		case "leave_date":
+
+			update.setCategory("인사정보");
+			update.setFiled_name("퇴사일");
+			if (old_data.getLeave_date() == null) {
+				stringtext = "재직중";
+			} else {
+				stringtext = old_data.getLeave_date().toString().substring(0, 10);
+			}
+			if (new_data.getLeave_date() == null) {
+				stringNewtext = "재입사";
+			} else {
+				stringNewtext = new_data.getLeave_date().toString().substring(0, 10);
+			}
+			update.setOld_data(stringtext);
+			update.setNew_data(stringNewtext);
+			break;
+		case "memo":
+			update.setCategory("인사정보");
+			update.setFiled_name("메모");
+			update.setOld_data(old_data.getMemo());
+			update.setNew_data(new_data.getMemo());
+			break;
 
 		}
 		return update;
 	}
-	
+
 	public InsertUpdateInfo MappingPrivateUpdate(String str, PrivateInfo old_data, PrivateInfo new_data) {
 		InsertUpdateInfo update = new InsertUpdateInfo();
-		
-			switch(str) {
-			case "pass":
-				update.setCategory("개인정보");
-				update.setFiled_name("비밀번호");
-				update.setOld_data(old_data.getPass());
-				update.setNew_data(new_data.getPass());
-				break;
-			case "phone":
-				update.setCategory("개인정보");
-				update.setFiled_name("연락처");
-				update.setOld_data(old_data.getPhone());
-				update.setNew_data(new_data.getPhone());
-				break;
-			case "phone2":
-				update.setCategory("개인정보");
-				update.setFiled_name("자택");
-				update.setOld_data(old_data.getPhone2());
-				update.setNew_data(new_data.getPhone2());
-				break;
-			case "e_mail":
-				update.setCategory("개인정보");
-				update.setFiled_name("이메일");
-				update.setOld_data(old_data.getE_mail());
-				update.setNew_data(new_data.getE_mail());
-				break;
-			case "address":
-				update.setCategory("개인정보");
-				update.setFiled_name("주소");
-				update.setOld_data(old_data.getAddress());
-				update.setNew_data(new_data.getAddress());
-				break;
+
+		switch (str) {
+		case "pass":
+			update.setCategory("개인정보");
+			update.setFiled_name("비밀번호");
+			update.setOld_data(old_data.getPass());
+			update.setNew_data(new_data.getPass());
+			break;
+		case "phone":
+			update.setCategory("개인정보");
+			update.setFiled_name("연락처");
+			update.setOld_data(old_data.getPhone());
+			update.setNew_data(new_data.getPhone());
+			break;
+		case "phone2":
+			update.setCategory("개인정보");
+			update.setFiled_name("자택");
+			update.setOld_data(old_data.getPhone2());
+			update.setNew_data(new_data.getPhone2());
+			break;
+		case "e_mail":
+			update.setCategory("개인정보");
+			update.setFiled_name("이메일");
+			update.setOld_data(old_data.getE_mail());
+			update.setNew_data(new_data.getE_mail());
+			break;
+		case "address":
+			update.setCategory("개인정보");
+			update.setFiled_name("주소");
+			update.setOld_data(old_data.getAddress());
+			update.setNew_data(new_data.getAddress());
+			break;
 
 		}
 		return update;

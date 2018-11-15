@@ -1,5 +1,9 @@
 package sk.management.action;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +48,17 @@ public class CommonManagementAc {
 				}
 				break;
 			case "leave_date":
-				//코드 수정;; 
+				Timestamp dateTime;
+				if (request.getParameter("leave_date").equals("")) {
+					dateTime = null;
+				} else {
+					DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+					Date date = formatter.parse(request.getParameter("leave_date"));
+					dateTime = new Timestamp(date.getTime());
+				}
+
+				Management.setLeave_date(dateTime);
+				break;
 			}
 
 		}

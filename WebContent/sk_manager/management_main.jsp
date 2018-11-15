@@ -11,14 +11,18 @@
     </jsp:attribute>
 
 	<jsp:body>
-	<div class="container">
+	<c:if test="${not empty author}">
+            
+
+<div class="container big_box">
 <h2>인사 관리 </h2>
+<div class="">
 <p class="msg"></p>
 <div class="navi">
 
 <div>
 		<input type="text" name="name" id="searchName" /> <input
-						type="button" value="검색" id="searchBtn" />
+								type="button" value="검색" id="searchBtn" />
 						
 	</div>	
 		
@@ -46,19 +50,19 @@
 <%-- 	<%=request.getAttribute("message")%> --%>
 
 </div>
-<div>
+<div class="mem_box">
 	
-		${requestScope.memberlist }
 	<form action="${pageContext.request.contextPath}/sk_manager/update.do"
-					method="post">
+							method="post">
+					<div class="test">
 		<table id="table_box">
 			<tr>
 				<td>사번</td>
 				<td><input type="text" name="worker_number" id="worker_number"
-								class="input_box" readonly /></td>
-				<td>부서</td>
-				<td class="changeSel1"><select name="division" id="division"
-								class="sel input_box update_box" disabled>
+											class="input_box" readonly /></td>
+				<td class="input_move">부서</td>
+				<td class="changeSel1 input_move"><select name="division"
+											id="division" class="sel input_box update_box" disabled>
 				<option value="신입">신입</option>
 				<option value="개발">개발</option>
 				<option value="디자인">디자인</option>
@@ -72,11 +76,11 @@
 			<tr>
 				<td>이름</td>
 				<td><input type="text" name="name" id="name" class="input_box"
-								readonly /></td>
-				<td>직책</td>
-				<td class="changeSel2">
-				<select name="position" id="position" class="sel input_box update_box"
-								disabled>
+											readonly /></td>
+				<td class="input_move">직책</td>
+				<td class="changeSel2 input_move">
+				<select name="position" id="position"
+											class="sel input_box update_box" disabled>
 				<option value="신입">신입</option>
 				<option value="팀원">팀원</option>
 				<option value="팀장">팀장</option>
@@ -90,28 +94,28 @@
 			<tr>
 				<td>핸드폰</td>
 				<td><input type="text" name="phone" id="phone"
-								class="input_box  update_box" readonly /></td>
-				<td>입사일</td>
-				<td><input type="text" name="join_date" id="join_date"
-								class="input_box " readonly /></td>
+											class="input_box  update_box" readonly /></td>
+				<td class="input_move">입사일</td>
+				<td class="input_move"><input type="date" name="join_date"
+											id="join_date" class="input_box " readonly /></td>
 			</tr>
 			<tr>
 				<td>자택</td>
 				<td><input type="text" name="phone2" id="phone2"
-								class="input_box update_box" readonly /></td>
-				<td>퇴사일</td>
-				<td><input type="text" name="leave_date"
-								id="leave_date" class="input_box  update_box" readonly /></td>
+											class="input_box update_box" readonly /></td>
+				<td class="input_move">퇴사일</td>
+				<td class="input_move"><input type="date" name="leave_date"
+											id="leave_date" class="input_box  update_box" readonly /></td>
 			</tr>
 			<tr>
 				<td>e-mail</td>
 				<td><input type="text" name="e_mail" id="e_mail"
-								class="input_box update_box" readonly /></td>
+											class="input_box update_box" readonly /></td>
 								
 								
-				<td>재직여부</td>
-				<td class="changeSel3"><select name="active" id="active"
-								class="sel input_box update_box" disabled>
+				<td class="input_move">재직여부</td>
+				<td class="changeSel3 input_move"><select name="active"
+											id="active" class="sel input_box update_box" disabled>
 				<option selected value="1">재직중</option>
 				<option value="0">퇴 사</option>
 				</select>
@@ -121,33 +125,46 @@
 			<tr>
 				<td>주소</td>
 				<td><input type="text" name="address" id="address"
-								class="input_box update_box" readonly /></td>
-				<td>관리자</td>
-				<td><input type="text" name="authority" id="authority"
-								class="input_box" readonly /></td>
+											class="input_box update_box" readonly /></td>
+				<td class="input_move">관리자</td>
+				<td class="input_move"><input type="text" name="authority"
+											id="authority" class="input_box" readonly /></td>
 			</tr>
 			<tr>
 				<td>메모</td>
 				<td><input type="text" name="memo" id="memo"
-								class="input_box  update_box" readonly /></td>
+											class="input_box  update_box" readonly /></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td class="changeBtn"><input type="button" value="수정"
-								id="updateBtn" /></td>
+											id="updateBtn" /></td>
 				<td class="plusBtn"></td>
 				<td><input id="mangementList" type="button" value="인사기록"
-								onclick="location.href='${pageContext.request.contextPath}/sk_manager/management_list.do'" />
+											onClick="managementNull()" />
 								<input id="privateList" type="button" value="개인기록"
-								onclick="location.href='${pageContext.request.contextPath}/sk_manager/private_list.do'" /></td>
+											onClick="privateNull()" /></td>
+
 			</tr>
 		</table>
+		</div>
 	</form>
-	${requsetScope.maeeage }
+	</div>
 	</div>
 </div>
+
+
+        </c:if>
+	        <c:if test="${empty author }">
+	        관리자 권한이 없습니다.
+	         </c:if>
+	         <c:if test="${empty worker_number }">
+        
+        로그인을 해주세요 
+	 </c:if>
+	
  </jsp:body>
 </t:genericpage>
 
