@@ -5,23 +5,26 @@ var memberNumber = $("#worker_number"), memberName = $("#name"), memberDivision 
 
 var oldDiv, oldPos, oldAct;
 
-$(document).ready(function() {
+$(document).ready(function () {
+	$("#searchName").keydown(function(e){if(e.keyCode == 13){searchCheck()}})
 	$("#checkBtn").click(memberCheck);
 	$("#sBtn").click(formCheck);
 	$("#searchBtn").click(searchCheck);
 	$("#updateBtn").click(updateForm);
 	$("#memRegForm").click(insertMember);
-	memberDivision.change(function() {
+	memberDivision.change(function () {
 		changeValue(oldDiv)
 	});
-	memberPosition.change(function() {
+	memberPosition.change(function () {
 		changeValue(oldPos)
 	});
-	memberActive.change(function() {
+	memberActive.change(function () {
 		changeValue(oldAct)
 	});
 
 })
+
+
 
 function changeValue(old) {
 
@@ -30,7 +33,7 @@ function changeValue(old) {
 	}
 	if (old == oldDiv) {
 		if (confirm(memberName.val() + "님의 부서를 " + old + "팀에서 "
-				+ memberDivision.val() + "팀으로 변경하시겠습니까?")) {
+			+ memberDivision.val() + "팀으로 변경하시겠습니까?")) {
 			return;
 
 		} else {
@@ -39,7 +42,7 @@ function changeValue(old) {
 
 	} else if (old == oldPos) {
 		if (confirm(memberName.val() + "님의 직책을 " + old + "에서 "
-				+ memberPosition.val() + "으로 변경하시겠습니까?")) {
+			+ memberPosition.val() + "으로 변경하시겠습니까?")) {
 			return;
 
 		} else {
@@ -59,7 +62,7 @@ function changeValue(old) {
 		}
 
 		if (confirm(memberName.val() + "님의 재직여부를 " + oldTxt + "에서 " + actTxt
-				+ "(으)로 변경하시겠습니까?")) {
+			+ "(으)로 변경하시겠습니까?")) {
 			var date = new Date();
 			var year = date.getFullYear();
 			var month = date.getMonth() + 1;
@@ -81,10 +84,10 @@ function managementNull() {
 		return alert("사원을 선택해 주세요");
 	}
 	window
-			.open(//배포할때 주소 변경  또는 로컬호스트 처리방법 찾아보기 
-					'http://localhost:8080/PlayRex/sk_manager/management_list.do?worker_number='+memberNumber.val(),
-					'인사기록',
-					'width=700, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=yes')
+		.open(//배포할때 주소 변경  또는 로컬호스트 처리방법 찾아보기 
+			'http://localhost:8080/PlayRex/sk_manager/management_list.do?worker_number=' + memberNumber.val(),
+			'인사기록',
+			'width=800, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=yes')
 }
 
 function privateNull() {
@@ -92,10 +95,10 @@ function privateNull() {
 		return alert("사원을 선택해 주세요");
 	}
 	window
-			.open(
-					'http://localhost:8080/PlayRex/sk_manager/private_list.do?worker_number='+memberNumber.val(),
-					'개인기록',
-					'width=700, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=yes')
+		.open(
+			'http://localhost:8080/PlayRex/sk_manager/private_list.do?worker_number=' + memberNumber.val(),
+			'개인기록',
+			'width=800, height=500, toolbar=no, menubar=no, scrollbars=yes, resizable=yes')
 
 }
 
@@ -109,7 +112,7 @@ function resetButn() {
 	memberName.css("background-color", "lightgray");
 	$(".plusBtn").text("");
 	$(".changeBtn").html(
-			"<input type=\"button\" value=\"수정\"	id=\"updateBtn\" />");
+		"<input type=\"button\" value=\"수정\"	id=\"updateBtn\" />");
 	$("#updateBtn").click(updateForm);
 	$("#searchBtn").removeAttr('disabled');
 	$("#memRegForm").removeAttr('disabled');
@@ -143,11 +146,11 @@ function updateForm() {
 		$(".update_box").css("background-color", "white");
 		$(".update_box").removeAttr("disabled");
 		$(".changeBtn").html(
-				"<input type=\"button\" value=\"수정완료\" id=\"changeBtn\" />");
+			"<input type=\"button\" value=\"수정완료\" id=\"changeBtn\" />");
 		$("#changeBtn").click(update_submit);
 		$(".plusBtn")
-				.html(
-						"<input type=\"button\" value=\"취소\" id=\"resetBtn\" onclick=\"resetButn()\"/>");
+			.html(
+				"<input type=\"button\" value=\"취소\" id=\"resetBtn\" onclick=\"resetButn()\"/>");
 		$("#resetBtn").click(resetButn);
 
 	} else {
@@ -156,10 +159,10 @@ function updateForm() {
 }
 
 function searchCheck() {
-	if ($("#searchName").val() == "") {
-		return alert("사원이름을 입력해주세요");
+	// if ($("#searchName").val() == "") {
+	// 	return alert("사원이름을 입력해주세요");
 
-	}
+	// } 공백검색으로 회원 전체 리스트 나오게 수정 
 	loadMemberList();
 }
 
@@ -195,11 +198,11 @@ function insertMember() {
 	memberMemo.css("background-color", "white");
 	memberMemo.removeAttr('readonly');
 	$(".changeBtn").html(
-			"<input type=\"button\" value=\"등록완료\" id=\"insertBtn\" />");
+		"<input type=\"button\" value=\"등록완료\" id=\"insertBtn\" />");
 	$("#insertBtn").click(insertFormcheck);
 	$(".plusBtn")
-			.html(
-					"<input type=\"button\" value=\"취소\" id=\"resetBtn\" onclick=\"resetButn()\"/>");
+		.html(
+			"<input type=\"button\" value=\"취소\" id=\"resetBtn\" onclick=\"resetButn()\"/>");
 
 }
 function insertFormcheck() {
@@ -218,7 +221,7 @@ function insertFormcheck() {
 function insert_submit() {
 
 	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
+	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var text = this.responseText;
 			$(".msg").html(text);
@@ -237,7 +240,7 @@ function insert_submit() {
 			$("#searchName").removeAttr('disabled');
 			loadMemberList();
 			$(".changeBtn").html(
-					"<input type=\"button\" value=\"수정\" id=\"updateBtn\" />");
+				"<input type=\"button\" value=\"수정\" id=\"updateBtn\" />");
 			$("#updateBtn").click(updateForm);
 			$(".plusBtn").text("");
 			memberDivision.attr("disabled", true);
@@ -249,15 +252,15 @@ function insert_submit() {
 	xhttp.open("POST", "m_register.do", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp
-			.send("name=" + memberName.val() + "&division="
-					+ memberDivision.val() + "&position="
-					+ memberPosition.val() + "&memo=" + memberMemo.val());
+		.send("name=" + memberName.val() + "&division="
+			+ memberDivision.val() + "&position="
+			+ memberPosition.val() + "&memo=" + memberMemo.val());
 
 }
 
 function update_submit() {
 	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
+	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var text = this.responseText;
 			$(".msg").html(text);
@@ -267,7 +270,7 @@ function update_submit() {
 			$("select").attr('disabled', true);
 			$(".plusBtn").text("");
 			$(".changeBtn").html(
-					"<input type=\"button\" value=\"수정\" id=\"updateBtn\" />");
+				"<input type=\"button\" value=\"수정\" id=\"updateBtn\" />");
 			$("#updateBtn").click(updateForm);
 			$("#searchBtn").removeAttr('disabled');
 			$("#memRegForm").removeAttr('disabled');
@@ -288,22 +291,23 @@ function update_submit() {
 	xhttp.open("POST", "m_update.do", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("worker_number=" + memberNumber.val() + "&name="
-			+ memberName.val() + "&division=" + memberDivision.val()
-			+ "&position=" + memberPosition.val() + "&join_date="
-			+ memberJoinDate.val() + "&leave_date=" + memberLeaveDate.val()
-			+ "&active=" + memberActive.val() + "&memo=" + memberMemo.val()
-			+ "&authority=" + memberAuthority.val() + "&phone="
-			+ memberPhone.val() + "&phone2=" + memberPhone2.val() + "&e_mail="
-			+ memberEmail.val() + "&address=" + memberAdress.val()
-			+ "&leave_date=" + levedate);
+		+ memberName.val() + "&division=" + memberDivision.val()
+		+ "&position=" + memberPosition.val() + "&join_date="
+		+ memberJoinDate.val() + "&leave_date=" + memberLeaveDate.val()
+		+ "&active=" + memberActive.val() + "&memo=" + memberMemo.val()
+		+ "&authority=" + memberAuthority.val() + "&phone="
+		+ memberPhone.val() + "&phone2=" + memberPhone2.val() + "&e_mail="
+		+ memberEmail.val() + "&address=" + memberAdress.val()
+		+ "&leave_date=" + levedate);
 
 }
 
 function detailName(i) {
 	var xhttp = new XMLHttpRequest();
 
-	xhttp.onreadystatechange = function() {
+	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
+
 			var text = this.responseText;
 			var textList = text.split(",");
 			// textList에는 사원번호, 이름, 부서, 직책, 입사일, 퇴사일, 재직여부,
@@ -343,9 +347,16 @@ function detailName(i) {
 function loadMemberList() {
 	var xhttp = new XMLHttpRequest();
 
-	xhttp.onreadystatechange = function() {
+	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
-			$("#memberList").html(this.response);
+			$(".msg").html("");
+			$("#memberList").html("");
+
+			if (this.responseText.indexOf("tr") == -1) {
+				$(".msg").html(this.responseText);
+			} else {
+				$("#memberList").html(this.response);
+			}
 
 		}
 
@@ -358,7 +369,7 @@ function loadMemberList() {
 
 function loadWorkerNumber() {
 	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
+	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			$(".checkText").text(this.responseText);
 			if (this.responseText == "인증되었습니다") {

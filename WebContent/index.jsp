@@ -63,6 +63,8 @@
 		window.onpopstate = function() {
 			history.go(1);
 		};
+		
+		$("#pass").keydown(function(e){if(e.keyCode == 13){submit()}});
 	</script>
 </body>
 </html>

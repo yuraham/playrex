@@ -39,7 +39,7 @@
 }
 
 .list_txt{
-	padding-left: 55px;
+	padding-left: 49px;
 }
 
 .input_move{
@@ -69,6 +69,7 @@
 	
 }
 .msg{
+	
 	border:1px solid black;
 	padding-top:10px;
 	height: 80px;
@@ -92,4 +93,10 @@
 	top:15px;
 	left:-100px;
 	
+}
+#memberList{
+	overflow: scroll;
+	overflow-x: hidden;
+       
+        height: 220px;
 }
