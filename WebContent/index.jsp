@@ -20,7 +20,6 @@
 	rel="stylesheet" type="text/css">
 </head>
 <body>
-<<<<<<< HEAD
 <div class="fullheight">
 	<div class="col">
     <c:if test="${not empty requestScope.message}">
@@ -45,14 +44,6 @@
 				<input type="text" name="worker_number" id="id" placeholder="사원번호"/><br />
 				<input type="password" name="pass" id="pass" placeholder="비밀번호"/><br />
 				</div>
-				<div class="loginbox">
-					<form action="${pageContext.request.contextPath}/sk_user/login.do"
-						method="post">
-						<div class="mylogin">
-							<input type="text" name="worker_number" id="id"
-								placeholder="사원번호" /><br /> <input type="password" name="pass"
-								id="pass" placeholder="비밀번호" /><br />
-						</div>
 						<div class="btnbox">
 							<input type="submit" value="접속" class='loginbtn' />
 						</div>
