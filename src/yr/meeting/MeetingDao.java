@@ -174,14 +174,14 @@ public class MeetingDao extends RexConnection{
 	}
 	
 	//수정, 등록에서 텍스트 집어넣기
-	public int updatePost2(MeetingInfo post, int met_numb) {
+	public int updatePost2(String text, int met_numb) {
 		PreparedStatement pstmt = null;
 		String query = "UPDATE rex_meeting SET met_text=? WHERE met_numb=?";
 		int res = 0;
 		openConnection();
 		try {			
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, post.getMet_text());
+			pstmt.setString(1, text);
 			pstmt.setInt(2, met_numb);
 			res = pstmt.executeUpdate();
 		} catch (Exception e) {

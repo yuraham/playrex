@@ -32,7 +32,7 @@
 				<hr>
 				<p>등록 파일 : </p>
 				<c:forEach var="i" items="${requestScope.metlist}">
-					<p>${i.data_name}</p>
+					<p><a href="${pageContext.request.contextPath}/yr_meeting/down_data.do?data_numb=${i.data_numb}">${i.data_name}</a></p>
 				</c:forEach>
 			</c:if>
 			<hr>

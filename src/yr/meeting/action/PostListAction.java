@@ -31,6 +31,7 @@ public class PostListAction implements CommandAction {
 		ArrayList<Integer> metData = new ArrayList<>(); 
 		
 		String text = null;
+		int pText = 0;
 		int memnumb = 0;
 		int metnumb = 0;
 		int dataNum = 0;
@@ -42,7 +43,12 @@ public class PostListAction implements CommandAction {
 			if (col == null) {
 				text = "총 게시글 "+ num;
 			} else {
-				text = "검색어 : "+word+"("+col+")"; 
+				pText = 1;
+				if(col.equals("none")) {
+					text = "검색어 : "+word;
+				} else {
+					text = "검색어 : "+word+"("+col+")";
+				}
 			}
 		}
 		
@@ -57,6 +63,7 @@ public class PostListAction implements CommandAction {
 		request.setAttribute("member", member);
 		request.setAttribute("list", searchlist);
 		request.setAttribute("text", text);
+		request.setAttribute("pText", pText);
 		request.setAttribute("metData", metData);
 		
 		return "post_list.jsp";

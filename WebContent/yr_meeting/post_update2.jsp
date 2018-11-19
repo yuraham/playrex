@@ -12,7 +12,7 @@
 		<c:if test="${not empty worker_number }">
         <div class="container">
         <small>다음버튼을 누르면 이전 돌아오지 않습니다. 신중히 저장해주세요.</small>
-		<form action="${pageContext.request.contextPath}/yr_meeting/update2.do?met_numb=${requestScope.post.met_numb}" method="post" enctype="Multipart/form-data">
+		<form action="${pageContext.request.contextPath}/yr_meeting/update2.do?met_numb=${requestScope.post.met_numb}" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td>내용 및 결과</td>

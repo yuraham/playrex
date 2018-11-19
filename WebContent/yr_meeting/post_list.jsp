@@ -35,6 +35,9 @@
  			</tbody>
 		</table>
 		<a href="${pageContext.request.contextPath}/yr_meeting/post_form.do">새글쓰기</a>
+		<c:if test="${pText == 1}">
+			<a href="${pageContext.request.contextPath}/yr_meeting/list.do">돌아가기</a>
+		</c:if>
 		</div>
  		<div>
 			<form method="GET" action="${pageContext.request.contextPath}/yr_meeting/list.do">

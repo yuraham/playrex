@@ -79,5 +79,7 @@ public class ControllerAction extends HttpServlet {
         // home.do는 index.jsp를 반환
         RequestDispatcher dispatcher = request.getRequestDispatcher(view);
         dispatcher.forward(request, response);
+        //downroadDataAction에서 오류 : java.lang.IllegalStateException: Cannot forward after response has been committed 에러
+        //리턴??
     }
 }

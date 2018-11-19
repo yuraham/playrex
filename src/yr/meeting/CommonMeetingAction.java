@@ -25,9 +25,9 @@ public class CommonMeetingAction {
 			case "met_subject":
 				memo.setMet_subject(request.getParameter("met_subject"));
 				break;
-			case "met_text":
-				memo.setMet_text(request.getParameter("met_text"));
-				break;
+//			case "met_text":
+//				memo.setMet_text(request.getParameter("met_text"));
+//				break;
 			case "met_writer":
 				String param=request.getParameter("met_writer");
 				int num = Integer.parseInt(param);

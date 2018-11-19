@@ -21,6 +21,13 @@
 			<p>${requestScope.post.met_text}</p>
 			<a href="${pageContext.request.contextPath}/yr_meeting/delete_end.do?met_numb=${requestScope.post.met_numb}">네</a>
 			<a href="${pageContext.request.contextPath}/yr_meeting/detail.do?met_numb=${requestScope.post.met_numb}">아니오</a>
+			<c:if test="${requestScope.metlist.size() > 0}">
+				<hr>
+				<p>등록 파일 : </p>
+				<c:forEach var="i" items="${requestScope.metlist}">
+					<p>${i.data_name}</p>
+				</c:forEach>
+			</c:if>
 		</div>
 		</c:if>
 		<c:if test="${empty worker_number }">

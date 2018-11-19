@@ -61,6 +61,7 @@ public class PostDetailAction implements CommandAction{
 		request.setAttribute("text", text);
 		request.setAttribute("metlist", metlist);
 		
+
 		return "post_detail.jsp";
 	}
 }
