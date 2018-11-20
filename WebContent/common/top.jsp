@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<nav class="navbar sticky-top navbar-expand-sm navcor navbar-light">
+<nav class="navbar navbar-expand-sm navcor navbar-light">
 	<a href="${pageContext.request.contextPath}" class="navbar-brand">PLAYREX</a>
 	<c:if test="${not empty worker_number }">
 	<span class="navbar-text">사원번호${sessionScope.worker_number} : <a href="${pageContext.request.contextPath}/sk_user/private_info.do">${sessionScope.name }</a>님 안녕하세요 !</span>

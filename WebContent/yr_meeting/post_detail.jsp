@@ -9,40 +9,56 @@
         <title>${requestScope.post.met_numb} Detail</title>
         </jsp:attribute>
     <jsp:body>
+    <main>
 		<c:if test="${not empty worker_number }">
-		<div class="container">
-			<h1>디테일페이지</h1>
+		<div class="container post-detail">
+			<h2 class="post-main-font">${requestScope.post.met_title}</h2>
+			<table class="table table-borderless table-sm post-detail-table">
+				<tr>
+					<td>글번호 : </td>
+					<td>${requestScope.post.met_numb}</td>
+					<td>작성일 : </td>
+					<td colspan="3">${requestScope.post.met_date}</td>
+				</tr>
+				<tr>
+					<td>작성자 : </td>
+					<td> ${requestScope.member.name}</td>
+					<td>회의실 : </td>
+					<td>${requestScope.post.met_room}</td>
+					<td>프로젝트 명 : </td>
+					<td>${requestScope.post.met_project}</td>
+				</tr>
+			</table>
 			<hr>
-			<p>${requestScope.post.met_title}</p>
-			<p>${requestScope.post.met_numb}번 글</p>
-			<p>회의실 : ${requestScope.post.met_room}</p>
-			<p>프로젝트 명 : ${requestScope.post.met_project}</p>
-			<p>작성일 : ${requestScope.post.met_date}</p>
-			<p>작성자 : ${requestScope.member.name}</p>
-			<p>안건요약 : ${requestScope.post.met_subject}</p>
-			<p>${requestScope.post.met_text}</p>
+			<h4 class="post-main-font text-center">${requestScope.post.met_subject}</h4>
+			<p class="post-detail-text">${requestScope.post.met_text}</p>
 			<c:if test="${requestScope.memberlist.size() > 0}">
-				<p>참가자 : 
+				<p><strong class="post-main-font">참가자 : </strong>
 	 			<c:forEach var="i" items="${requestScope.memberlist}">
-					${i.name} 
+					<span class="post-detail-prti">${i.name}</span>
 				</c:forEach>
 				</p>
 			</c:if>
 			<c:if test="${requestScope.metlist.size() > 0}">
 				<hr>
-				<p>등록 파일 : </p>
+				<div class="post-detail-filediv">
+				<p><strong class="post-main-font">등록 파일 : </strong></p>
 				<c:forEach var="i" items="${requestScope.metlist}">
-					<p><a href="${pageContext.request.contextPath}/yr_meeting/down_data.do?data_numb=${i.data_numb}">${i.data_name}</a></p>
+					<p class="post-detail-file"><a href="${pageContext.request.contextPath}/yr_meeting/down_data.do?data_numb=${i.data_numb}">${i.data_name}</a></p>
 				</c:forEach>
+				</div>
 			</c:if>
 			<hr>
-			<a href="${pageContext.request.contextPath}/yr_meeting/delete.do?met_numb=${requestScope.post.met_numb}">삭제하기</a>
-			<a href="${pageContext.request.contextPath}/yr_meeting/update_form.do?met_numb=${requestScope.post.met_numb}">수정하기</a>
-			<a href="${pageContext.request.contextPath}/yr_meeting/list.do">돌아가기</a>
+			<div class="float-right">
+				<a href="${pageContext.request.contextPath}/yr_meeting/delete.do?met_numb=${requestScope.post.met_numb}" class="btn btn-outline-secondary post-btn">삭제하기</a>
+				<a href="${pageContext.request.contextPath}/yr_meeting/update_form.do?met_numb=${requestScope.post.met_numb}" class="btn btn-outline-secondary post-btn">수정하기</a>
+				<a href="${pageContext.request.contextPath}/yr_meeting/list.do" class="btn btn-outline-secondary post-btn">돌아가기</a>
+			</div>
 		</div>
 		</c:if>
 		<c:if test="${empty worker_number }">
-		<h3>로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
+		<h3 class="text-center post-not-login">로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
 		</c:if>
+		</main>
     </jsp:body>
 </t:genericpage>

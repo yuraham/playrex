@@ -25,7 +25,7 @@
  	 		<c:forEach var="i" items="${requestScope.list}" varStatus="status">
  	 			<tr>
 					<td>${i.met_numb}</td>
-					<td width="20%" class="align-middle">${i.met_date}</td>
+					<td width="20%" class="align-middle"><small>${i.met_date}</small></td>
 					<td width="48%" class="black-td align-middle"><a href="${pageContext.request.contextPath}/yr_meeting/detail.do?met_numb=${i.met_numb}">${i.met_title}</a>
 						<c:if test="${requestScope.metData[status.index] > 0}"> [파일]</c:if>
 					</td>
@@ -69,7 +69,7 @@
 		</div>
 		</c:if>
 		<c:if test="${empty worker_number }">
-		<h3>로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
+		<h3 class="text-center post-not-login">로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
 		</c:if>
 	</main>
     </jsp:body>

@@ -38,7 +38,7 @@
 		</div>
 		</c:if>
 		<c:if test="${empty worker_number }">
-		<h3>로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
+		<h3 class="text-center post-not-login">로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
 		</c:if>
     </jsp:body>
 </t:genericpage>
