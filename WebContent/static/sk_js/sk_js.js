@@ -6,6 +6,7 @@ var memberNumber = $("#worker_number"), memberName = $("#name"), memberDivision 
 var oldDiv, oldPos, oldAct;
 
 $(document).ready(function () {
+	$(".input_file").hide();
 	$("#searchName").keydown(function(e){if(e.keyCode == 13){searchCheck()}})
 	$("#checkBtn").click(memberCheck);
 	$("#sBtn").click(formCheck);
@@ -181,7 +182,7 @@ function memberCheck() {
 }
 
 function insertMember() {
-	// $("#searchName").val("");
+	$(".input_file").show();
 	$("#searchName").attr("disabled", true);
 	$("#searchBtn").attr("disabled", true);
 	$("#memRegForm").attr("disabled", true);
@@ -205,6 +206,8 @@ function insertMember() {
 			"<input type=\"button\" value=\"취소\" id=\"resetBtn\" onclick=\"resetButn()\"/>");
 
 }
+
+
 function insertFormcheck() {
 	if (memberName.val() == "") {
 		return alert("이름을 입력해주세요")
@@ -214,6 +217,9 @@ function insertFormcheck() {
 	}
 	if (memberPosition.val() == null) {
 		return alert("직책을 선택해주세요")
+	}
+	if($(".input_file").val() != ""){
+	$("#imgForm").submit();
 	}
 	insert_submit();
 }
@@ -238,7 +244,7 @@ function insert_submit() {
 			$("#mangementList").removeAttr('disabled');
 			$("#privateList").removeAttr('disabled');
 			$("#searchName").removeAttr('disabled');
-			loadMemberList();
+			// loadMemberList();
 			$(".changeBtn").html(
 				"<input type=\"button\" value=\"수정\" id=\"updateBtn\" />");
 			$("#updateBtn").click(updateForm);
@@ -248,6 +254,7 @@ function insert_submit() {
 
 		}
 	}
+	
 
 	xhttp.open("POST", "m_register.do", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -277,7 +284,7 @@ function update_submit() {
 			$("#mangementList").removeAttr('disabled');
 			$("#privateList").removeAttr('disabled');
 			$("#searchName").removeAttr('disabled');
-			loadMemberList();
+			// loadMemberList();
 
 		}
 	}
