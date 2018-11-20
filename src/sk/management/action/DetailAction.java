@@ -1,21 +1,16 @@
 package sk.management.action;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import member.controller.CommandAction;
 import sk.management.ManagementDao;
 import sk.management.ManagementInfo;
 import sk.memberPrivate.PrivateDao;
 import sk.memberPrivate.PrivateInfo;
-import sk.memberPrivate.action.CommonPrivateAc;
 
 public class DetailAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		HttpSession session = request.getSession();
 		ManagementDao data = new ManagementDao();
 		PrivateDao data2 = new PrivateDao();
 		ManagementInfo management = new ManagementInfo();

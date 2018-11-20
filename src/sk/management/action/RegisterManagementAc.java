@@ -1,11 +1,20 @@
 package sk.management.action;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import member.controller.CommandAction;
 import sk.management.ManagementDao;
 import sk.management.ManagementInfo;
+import sk.picture.PictureDao;
 
 public class RegisterManagementAc implements CommandAction {
 	@Override

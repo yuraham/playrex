@@ -24,7 +24,7 @@
 	width: 250x;
 	height: 350px;
 	border: 1px solid black;
-	padding : 20px;
+	padding : 10px;
 }
 
 .right_txt1{
@@ -62,9 +62,16 @@
 	
 }
 
+
+.input_file{
+	position: absolute;
+	top:256px;
+	left:470px;
+	
+}
 .big_box{
 	border: 1px solid black;
-	height: 520px;
+	height: 530px;
 	width: 840px;
 	
 }
