@@ -23,11 +23,7 @@
 			<jsp:invoke fragment="header" />
 		</header>
 		<div id="body"><jsp:doBody /></div>
-		<footer>
-			<!-- 개별 페이지의 footer -->
-			<jsp:invoke fragment="footer" />
-			<jsp:include page="/common/bottom.jsp" flush="false" />
-		</footer>
+
 		<!-- 옵션: jQuery, Popper.js, Bootstrap JS 순으로 추가 -->
 		<script
 			src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.slim.min.js"></script>
@@ -39,6 +35,16 @@
 		<link
 			href="${pageContext.request.contextPath}/static/sk_css/sk_css.css"
 			rel="stylesheet" type="text/css" >
+		<link href="${pageContext.request.contextPath}/static/topBot_css/topBot_css.css"
+			rel="stylesheet" type="text/css" >
+		<script src="${pageContext.request.contextPath}/static/yr_js/yr_js.js"></script>
+		<link href="${pageContext.request.contextPath}/static/yr_css/yr_css.css"
+			rel="stylesheet" type="text/css" >
 	</div>
+	<footer>
+	<!-- 개별 페이지의 footer -->
+	<jsp:invoke fragment="footer" />
+	<jsp:include page="/common/bottom.jsp" flush="false" />
+	</footer>
 </body>
 </html>
