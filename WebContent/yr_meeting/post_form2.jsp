@@ -9,28 +9,27 @@
         <title>등록</title>
         </jsp:attribute>
     <jsp:body>
+    <main>
 		<c:if test="${not empty worker_number}">
 	        <div class="container">
 			<form action="${pageContext.request.contextPath}/yr_meeting/post2.do" method="post" enctype="Multipart/form-data">
-				<table>
-					<tr>
-						<td>내용 및 결과</td>
-						<td><input type="text" name="met_text"/></td>
-					</tr>
-					<tr>
-						<td>파일명 : </td>
-						<td><input type="file" name="fileName"/></td>
-					</tr>
-					<tr>
-						<td><input type="submit" value="저장"/></td>
-						<td><a href="${pageContext.request.contextPath}/yr_meeting/delete_end.do">취소</a></td>
-					</tr>
-				</table>
+				<div class="form-group">
+					<textarea class="form-control" id="met_text" name="met_text" rows="23" placeholder="내용 및 결과"></textarea>
+				</div>
+				<div class="custom-file">
+					<input type="file" name="fileName" id="form2-file-input" class="custom-file-input" />
+					<label class="custom-file-label my-post-file" for="form2-file-input">파일 첨부</label>
+				</div>
+				<div class="float-right">
+					<input type="submit" class="btn btn-outline-secondary post-btn" id="post-form2-submit" value="저장"/>
+					<a href="${pageContext.request.contextPath}/yr_meeting/delete_end.do?met_numb=${requestScope.post.met_numb}" class="btn btn-outline-secondary post-btn">취소</a>
+				</div>
 			</form>
 			</div>
 		</c:if>
 		<c:if test="${empty worker_number }">
 			<h3 class="text-center post-not-login">로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
 		</c:if>
+	</main>
     </jsp:body>
 </t:genericpage>

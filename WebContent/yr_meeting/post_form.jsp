@@ -9,73 +9,65 @@
         <title>등록</title>
         </jsp:attribute>
     <jsp:body>
+    <main>
 		<c:if test="${not empty worker_number}">
         <div class="container">
+        <h2 class="post-main-font post-form-main text-center">회의록 등록</h2>
 		<form action="${pageContext.request.contextPath}/yr_meeting/post.do" method="post">
-			<table>
-				<tr>
-					<td>제목</td>
-					<td colspan="2"><input type="text" name="met_title"/></td>
-				</tr>
-				<tr>
-					<td>회의실</td>
-					<td colspan="2"><input type="text" name="met_room"/></td>
-				</tr>
-				<tr>
-					<td>프로젝트명</td>
-					<td colspan="2"><input type="text" name="met_project"/></td>
-				</tr>
-				<tr>
-					<td>안건요약</td>
-					<td colspan="2"><input type="text" name="met_subject"/></td>
-				</tr>
-				<tr>
-					<td>작성자</td>
-					<td colspan="2"><input type="text" name="met_writer"/></td>
-				</tr>
-				<tr>
-					<td>참가자1</td>
-					<td colspan="2"><input type="text" name="part1"/></td>
-				</tr>
-				<tr>
-					<td>참가자2</td>
-					<td colspan="2"><input type="text" name="part2"/></td>
-				</tr>
-				<tr>
-					<td>참가자3</td>
-					<td colspan="2"><input type="text" name="part3"/></td>
-				</tr>
-				<tr>
-					<td>참가자4</td>
-					<td colspan="2"><input type="text" name="part4"/></td>
-				</tr>
-				<tr>
-					<td>참가자5</td>
-					<td colspan="2"><input type="text" name="part5"/></td>
-				</tr>
-				<tr>
-					<td>참가자6</td>
-					<td colspan="2"><input type="text" name="part6"/></td>
-				</tr>
-				<tr>
-					<td>참가자7</td>
-					<td colspan="2"><input type="text" name="part7"/></td>
-				</tr>
-				<tr>
-					<td>참가자8</td>
-					<td colspan="2"><input type="text" name="part8"/></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="다음"/></td>
-					<td><small>다음 버튼을 누르면 저장됩니다.</small></td>
-					<td><a href="${pageContext.request.contextPath}/yr_meeting/list.do">취소</a></td>
-				</tr>
-			</table>
+			<div class="form-group">
+				<input type="text" class="form-control" id="met_title" name="met_title" placeholder="제목" />
+			</div>
+			<div class="form-row post-form-text">
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="met_room" name="met_room" placeholder="회의실" />
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="met_writer" name="met_writer" placeholder="작성자" />
+				</div>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="met_project" name="met_project" placeholder="프로젝트" />
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control"  id="met_subject"name="met_subject" placeholder="안건요약" />
+			</div>
+			<div class="form-row post-form-text">
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="part1" name="part1" placeholder="참가자1" />
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="part2" name="part2" placeholder="참가자2"/>
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="part3" name="part3" placeholder="참가자3"/>
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="part4" name="part4" placeholder="참가자4" />
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="part5" name="part5" placeholder="참가자5" />
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="part6" name="part6" placeholder="참가자6" />
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="part7" name="part7" placeholder="참가자7" />
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="part8" name="part8" placeholder="참가자8" />
+				</div>
+			</div>
+			<hr>
+			<div class="float-right">
+				<input type="submit" class="btn btn-outline-secondary post-btn" id="post-form-submit" value="다음"/>
+				<a href="${pageContext.request.contextPath}/yr_meeting/list.do" class="btn btn-outline-secondary post-btn">취소</a>
+			</div>
 		</form>
 		</div>
 		</c:if>
 		<c:if test="${empty worker_number }">
 		<h3 class="text-center post-not-login">로그인 하지 않은 사용자는 접근할 수 없습니다.</h3>
 		</c:if>
+	</main>
     </jsp:body>
 </t:genericpage>
