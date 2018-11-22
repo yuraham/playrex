@@ -8,6 +8,7 @@ $(document).ready(function() {
 	});
 	
 	$("#post-form-submit").click(function() {
+        
         var met_title, met_room, met_project, met_subject, met_writer;
         met_title = $("#met_title").val();
         met_room = $("#met_room").val();

@@ -28,6 +28,7 @@ public class PostAction2 implements CommandAction{
 		MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "utf-8", new DefaultFileRenamePolicy());
 		
 		String text = multi.getParameter("met_text");
+		text = text.replace("\r\n", "<br>");
 		List<MeetingInfo> list = data.searchList(null, null);
 		int midx = list.get(0).getMet_numb();
 		
@@ -40,7 +41,6 @@ public class PostAction2 implements CommandAction{
 		if (fileName != "") {
 			mdata.insertData(fileName, realName, midx);
 		}
-		
 		data.updatePost2(text, midx);
 		String text2 = "detail.do?met_numb="+midx;
 		

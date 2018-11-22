@@ -29,6 +29,7 @@ public class PostUpdateAction2 implements CommandAction{
 		String text = multi.getParameter("met_text");
 		String numb = multi.getParameter("met_numb");
 		int midx = Integer.parseInt(numb);
+		text = text.replace("\r\n", "<br>");
 		
 		List<String> mlist = mdata.insertFile(multi, savePath, midx);
 		String fileName = "";

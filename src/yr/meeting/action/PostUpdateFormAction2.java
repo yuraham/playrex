@@ -27,6 +27,9 @@ public class PostUpdateFormAction2 implements CommandAction{
 //		ArrayList<MeetingDataInfo> metData = new ArrayList<MeetingDataInfo>();
 		MeetingDataDao metDatadao = new MeetingDataDao();
 		
+		String text=post.getMet_text();
+		text = text.replaceAll("<br>", "\r\n");
+		post.setMet_text(text);
 		
 		List<MeetingDataInfo> metlist= new ArrayList<>();
 		metlist=(metDatadao.allData(midx));

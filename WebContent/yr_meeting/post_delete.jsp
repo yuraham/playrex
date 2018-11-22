@@ -36,7 +36,7 @@
 							</tr>
 						</table>
 						<hr>
-						<h4 class="post-main-font text-center">${requestScope.post.met_subject}</h4>
+						<h4 class="post-main-font text-center post-detail-title">${requestScope.post.met_subject}</h4>
 						<p class="post-detail-text">${requestScope.post.met_text}</p>
 						<div class="mx-auto text-center">
 							<p><small>한번 삭제된 내용은 돌아오지 않습니다.</small></p>

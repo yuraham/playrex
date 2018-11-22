@@ -13,7 +13,7 @@
     <main>
 		<c:if test="${not empty worker_number }">
 		<div class="container post-detail">
-			<h2 class="post-main-font">${requestScope.post.met_title}</h2>
+			<h2 class="post-main-font post-detail-title">${requestScope.post.met_title}</h2>
 			<table class="table table-borderless table-sm post-detail-table">
 				<tr>
 					<td>글번호 : </td>
@@ -31,7 +31,7 @@
 				</tr>
 			</table>
 			<hr>
-			<h4 class="post-main-font text-center">${requestScope.post.met_subject}</h4>
+			<h4 class="post-main-font text-center post-detail-title">${requestScope.post.met_subject}</h4>
 			<p class="post-detail-text">${requestScope.post.met_text}</p>
 			<c:if test="${requestScope.memberlist.size() > 0}">
 				<p><strong class="post-main-font">참가자 : </strong>
@@ -52,7 +52,7 @@
 			<hr>
 			<div class="float-right">
 				<a href="${pageContext.request.contextPath}/yr_meeting/delete.do?met_numb=${requestScope.post.met_numb}" class="btn btn-outline-secondary post-btn">삭제하기</a>
-				<a href="${pageContext.request.contextPath}/yr_meeting/update_form.do?met_numb=${requestScope.post.met_numb}" class="btn btn-outline-secondary post-btn">수정하기</a>
+				<a href="${pageContext.request.contextPath}/yr_meeting/update_form.do?met_numb=${requestScope.post.met_numb}" class="btn btn-outline-secondary post-btn"">수정하기</a>
 				<a href="${pageContext.request.contextPath}/yr_meeting/list.do" class="btn btn-outline-secondary post-btn">돌아가기</a>
 			</div>
 		</div>
