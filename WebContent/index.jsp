@@ -22,9 +22,6 @@
 <body>
 <div class="fullheight">
 	<div class="col">
-    <c:if test="${not empty requestScope.message}">
-        <div>${requestScope.message }</div>
-    </c:if>
     <c:if test="${not empty worker_number }">
 		<div class="mainfont"><h1>로그인 되었습니다.</h1></div>
 		<a href="${pageContext.request.contextPath}/sk_user/logout.do">로그아웃</a>
@@ -49,13 +46,13 @@
 						</div>
 					</form>
 				</div>
-				<div class="loginbox">
-					<p class="logintext">
-						<a
-							href="${pageContext.request.contextPath}/sk_user/privateRegisterForm.jsp">회원가입</a>
+					<p class="text-center logintext">
+						<a href="${pageContext.request.contextPath}/sk_user/privateRegisterForm.jsp">회원가입</a>
 					</p>
-				</div>
 			</c:if>
+		<c:if test="${not empty requestScope.message}">
+			<div>${requestScope.message }</div>
+		</c:if>
 		</div>
 	</div>
 	<script type="text/javascript">

@@ -3,6 +3,7 @@
 <%@ page session="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <t:genericpage>
     <jsp:attribute name="head">
@@ -18,7 +19,7 @@
 					<td>글번호 : </td>
 					<td>${requestScope.post.met_numb}</td>
 					<td>작성일 : </td>
-					<td colspan="3">${requestScope.post.met_date}</td>
+					<td colspan="3"><fmt:formatDate value="${requestScope.post.met_date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				</tr>
 				<tr>
 					<td>작성자 : </td>

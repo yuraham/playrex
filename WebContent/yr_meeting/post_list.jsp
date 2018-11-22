@@ -3,6 +3,7 @@
 <%@ page session="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <t:genericpage>
 
@@ -25,7 +26,7 @@
  	 		<c:forEach var="i" items="${requestScope.list}" varStatus="status">
  	 			<tr>
 					<td>${i.met_numb}</td>
-					<td width="20%" class="align-middle"><small>${i.met_date}</small></td>
+					<td width="20%" class="align-middle"><small><fmt:formatDate value="${i.met_date}" pattern="yyyy-MM-dd HH:mm:ss" /></small></td>
 					<td width="48%" class="black-td align-middle"><a href="${pageContext.request.contextPath}/yr_meeting/detail.do?met_numb=${i.met_numb}">${i.met_title}</a>
 						<c:if test="${requestScope.metData[status.index] > 0}"> [파일]</c:if>
 					</td>
