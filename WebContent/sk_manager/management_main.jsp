@@ -140,10 +140,10 @@
 									id="authority" class="input_box" readonly /></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td>메모</td>
 				<td><input type="text" name="memo" id="memo"
 									class="input_box  update_box" readonly /></td>
-				<td>메모</td>
+				<td></td>
 				<td></td>
 			</tr>
 			<tr>

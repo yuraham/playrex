@@ -86,8 +86,8 @@
 				<tr>
 					<td></td>
 
-					<td><input type="button" value="정보수정" id="sBtn"/><input type="reset"
-						value="초기화 " /></td>
+					<td><input type="button" value="정보수정" id="sBtn"/><input type="button"
+						value="취소 " onclick="history.back(-1)" /></td>
 				</tr>
 			</table>
 

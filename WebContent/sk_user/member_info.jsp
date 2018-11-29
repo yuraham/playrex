@@ -33,8 +33,7 @@
 					<td>
 						${sessionScope.management.division }</td>
 				</tr>
-				<tr>
-				</tr>
+				
 				<tr>
 					<td>직책:</td>
 					<td>${sessionScope.management.position }</td>
@@ -70,7 +69,8 @@
 				<tr>
 					<td></td>
 
-					<td><input type="button" value="정보수정" onclick="location.href='${pageContext.request.contextPath}/sk_user/member_info_update.jsp'"/></td>
+					<td><input type="button" value="정보수정"
+					onclick="location.href='${pageContext.request.contextPath}/sk_user/member_info_update.jsp'" /></td>
 				</tr>
 			</table>
 
@@ -80,7 +80,7 @@
 
 
 
-		</form>
+		
 	
 	
 	

@@ -62,7 +62,7 @@ class MemberPrivateTest {
 		privacy.setPhone("4657");
 		privacy.setPhone2(null);
 		privacy.setE_mail("465@4");
-		privacy.setAddress("수정된 주소");
+		privacy.setAddress("수정된 주소2");
 		
 		assertEquals(1, data.updateMember(privacy, data2.lastNum()));
 		
