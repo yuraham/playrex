@@ -7,7 +7,7 @@ var oldDiv, oldPos, oldAct;
 
 $(document).ready(function () {
 	$(".input_file").hide();
-	$("#searchName").keydown(function(e){if(e.keyCode == 13){searchCheck()}})
+	$("#searchName").keydown(function (e) { if (e.keyCode == 13) { searchCheck() } })
 	$("#checkBtn").click(memberCheck);
 	$("#sBtn").click(formCheck);
 	$("#searchBtn").click(searchCheck);
@@ -28,6 +28,7 @@ $(document).ready(function () {
 
 
 function changeValue(old) {
+	if (old == "") return;
 
 	if (old == undefined) {
 		old = ""
@@ -123,6 +124,9 @@ function resetButn() {
 	memberDivision.attr("disabled", true);
 	memberPosition.attr("disabled", true);
 	memberActive.attr("disabled", true);
+	oldDiv = "";
+	oldPos = "";
+	oldAct = "";
 	// if (memberNumber.val() == "") {
 	// 	memberDivision.val("");
 	// }
@@ -182,6 +186,10 @@ function memberCheck() {
 }
 
 function insertMember() {
+	oldDiv = "";
+	oldPos = "";
+	oldAct = "";
+
 	$(".input_file").show();
 	$("#searchName").attr("disabled", true);
 	$("#searchBtn").attr("disabled", true);
@@ -218,8 +226,8 @@ function insertFormcheck() {
 	if (memberPosition.val() == null) {
 		return alert("직책을 선택해주세요")
 	}
-	if($(".input_file").val() != ""){
-	$("#imgForm").submit();
+	if ($(".input_file").val() != "") {
+		$("#imgForm").submit();
 	}
 	insert_submit();
 }
@@ -254,7 +262,7 @@ function insert_submit() {
 
 		}
 	}
-	
+
 
 	xhttp.open("POST", "m_register.do", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

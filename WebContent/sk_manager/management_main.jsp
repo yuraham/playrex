@@ -51,19 +51,19 @@
 
 </div>
 <div class="mem_box">
-<form id="imgForm"
+<%-- <form id="imgForm"
 						action="${pageContext.request.contextPath}/sk_manager/insert_pic.do"
 						method="post" enctype="multipart/form-data">
 						<input type="file" value="첨부" name="datefile" class="input_file" />
-					</form>
+					</form> --%>
 	
 	<form action="${pageContext.request.contextPath}/sk_manager/update.do"
 						method="post">
 					
 		<table id="table_box">
 		<tr>
-								<td>사진</td>
-								<td></td>
+								<%-- <td>사진</td>
+								<td></td> --%>
 							</tr>
 			<tr>
 				<td>사번</td>
